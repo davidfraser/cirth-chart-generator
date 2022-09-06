@@ -1,0 +1,16 @@
+{
+  "name": "cirth-chart-generator",
+  "version": "1.0.0",
+  "description": "Generates an SVG image of a reference for Cirth characters",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tolkien",
+    "cirth",
+    "svg"
+  ],
+  "author": "David Fraser <david@frasergo.org>",
+  "license": "ISC"
+}
