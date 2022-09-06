@@ -12,5 +12,8 @@
     "svg"
   ],
   "author": "David Fraser <david@frasergo.org>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mustache": "^4.2.0"
+  }
 }
