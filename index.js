@@ -17,8 +17,7 @@ const cirthData = {
         9: {fontchar: '9', orthography: 'd'},
         10: {fontchar: '0', orthography: 'th'},
         11: {fontchar: '!', orthography: 'dh'},
-        24: {fontchar: 'o', orthography: 'gw'},
-        26: {fontchar: 'Q', orthography: 'ghw'},
+        12: {fontchar: '@', orthography: 'r'},
         13: {fontchar: '#', orthography: 'ch'},
         14: {fontchar: '$', orthography: 'j'},
         15: {fontchar: '%', orthography: 'sh'},
@@ -27,16 +26,30 @@ const cirthData = {
         19: {fontchar: 'r', orthography: 'g'},
         20: {fontchar: 't', orthography: 'kh'},
         21: {fontchar: 'y', orthography: 'gh'},
-        29: {fontchar: 'T', orthography: 'g'},
-        30: {fontchar: 'R', orthography: 'gh'},
+        23: {fontchar: 'i', orthography: 'kw'},
+        24: {fontchar: 'o', orthography: 'gw'},
+        25: {fontchar: 'p', orthography: 'khw'},
+        26: {fontchar: 'Q', orthography: 'ghw'},
+        27: {fontchar: 'W', orthography: 'ngw'},
+        28: {fontchar: 'E', orthography: 'nw'},
+        29: {fontchar: 'R', orthography: 'g'}, // This was T in the original chart, but that's wrong
+        30: {fontchar: 'T', orthography: 'gh'}, // This was R in the original chart, but that's wrong
         34: {fontchar: 'f', orthography: 's'},
         35: {fontchar: 'g', orthography: 's'},
+        40: {fontchar: ';', orthography: 'y'},
+        41: {fontchar: 'A', orthography: 'hy'},
         57: {fontchar: 'X', orthography: 'ps'},
         58: {fontchar: 'C', orthography: 'ts'},
+        60: {fontchar: 'B', orthography: '&', isWord: true},
+        E2: {fontchar: ':', orthography: 'll'},
+        U46: {fontchar: 'æ', orthography: 'ndž'},
         U47: {fontchar: 'à', orthography: ''},
         U48: {fontchar: 'á', orthography: ''},
         U49: {fontchar: 'â', orthography: ''},
         U4A: {fontchar: 'ã', orthography: ''},
+        U4B: {fontchar: 'ä', orthography: ''},
+        U4C: {fontchar: 'å', orthography: 'nd'},
+        U4D: {fontchar: 'é', orthography: ''},
         U52: {fontchar: 'Ü', orthography: 'ps'},
         U53: {fontchar: 'Ý', orthography: 'bz'},
         U54: {fontchar: 'Þ', orthography: 'ks'},
@@ -50,10 +63,13 @@ const cirthData = {
 
 const HALF_SPACE = {'special': 'half-space'};
 const FULL_SPACE = {'special': 'full-space'};
+const SPACE = FULL_SPACE;
 
 const cirthLayout = {
     layoutRows: [
         // {rowLabel: '0', cirth: []},
+        {rowLabel: '7', cirth: ['U46', 27, 12, 'U4B', 'U4C', SPACE, HALF_SPACE, SPACE, SPACE, 'E2']},
+        {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41]},
         {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D']},
         {rowLabel: '10', cirth: [26, 11, 10, 8, 9, 24]},
         {rowLabel: '11', cirth: [21, 20, 18, 19]},
@@ -64,6 +80,8 @@ const cirthLayout = {
         {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6]},
     ],
     rowOffsets: {
+        7: {leftchar: -3},
+        8: {leftchar: -3},
         9: {leftchar: -2},
         10: {leftchar: -3},
         11: {leftchar: -2},
@@ -104,6 +122,10 @@ function expandedLayout(layout, charLookup) {
                 if (cirthDisplayNumber.endsWith('_alt')) {
                     cirthDisplayNumber = cirthDisplayNumber.replace('_alt', '*');
                 }
+            } else if (cirthLabel.startsWith('E')) {
+                cirthLabel = cirthLabel.replace('E', 'Erebor');
+                cirthStyle = 'cirthErebor';
+                cirthDisplayNumber = cirthDisplayNumber.toLowerCase();
             }
             var charInfo = Object.assign({}, charLookup[cirthNumber]);
             if (charInfo['isWord'] == true) {
