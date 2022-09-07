@@ -35,32 +35,12 @@ const cirthLayout = {
         {rowLabel: '14', cirth: ['U55', 'U54', 'U52', 'U53']},
         {rowLabel: '11', cirth: [21, 20, 18, 19]},
     ],
-    // TODO: calculate this layout info logically
     rowOffsets: {
-        11: {x: 0, y: -36.83084, chary: 148.19369},
-        14: {x: 0, y: -56.40996, chary: 223.01904},
-        15: {x: 0, y: 0, chary: 185.24779},
-        16: {x: 0, y: 23.211107, chary: 180.22876},
+        11: {leftchar: -2},
+        14: {leftchar: -2},
+        15: {leftchar: -1},
+        16: {leftchar: -4},
     },
-    charOffsets: {
-        1: 11.999348,
-        2: 28.263628,
-        3: -5.313631,
-        4: -21.763332,
-        6: 44.726389,
-        7: -38.178644,
-        18: 11.842247,
-        19: 28.305008,
-        20: -4.422029,
-        21: -21.735008,
-        57: 11.999348,
-        58: -5.313631,
-        U52: 11.999348,
-        U53: 28.263628,
-        U54: -5.313631,
-        U55: -21.763332,
-        U60: -54.420213,
-    }
 }
 
 function expandedLayout(layout, charLookup) {
@@ -69,9 +49,10 @@ function expandedLayout(layout, charLookup) {
     for (var layoutRow of layout['layoutRows']) {
         const rowLabel = layoutRow['rowLabel'];
         const rowOffset = layout['rowOffsets'][rowLabel];
-        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: rowOffset['x'], y: rowOffset['y']}};
+        var yOffset = parseInt(rowLabel)*18.4154-91.20655;
+        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: 0, y: yOffset}};
         var expandedChars = [];
-        for (var cirthNumber of layoutRow['cirth']) {
+        for (let [index, cirthNumber] of layoutRow['cirth'].entries()) {
             var cirthId = typeof cirthNumber == 'number' ? cirthNumber.toString() : cirthNumber;
             var cirthLabel = cirthId;
             var cirthDisplayNumber = cirthId;
@@ -89,7 +70,8 @@ function expandedLayout(layout, charLookup) {
             charInfo['cirthId'] = cirthId;
             charInfo['cirthLabel'] = cirthLabel;
             charInfo['cirthStyle'] = cirthStyle;
-            charInfo['offset'] = {x: layout['charOffsets'][cirthNumber], y: rowOffset['chary']};
+            var charOffset = (index + rowOffset['leftchar'])*16.68 + 11.625;
+            charInfo['offset'] = {x: charOffset, y: 0};
             expandedChars.push(charInfo);
         }
         expandedRow['cirth'] = expandedChars;
