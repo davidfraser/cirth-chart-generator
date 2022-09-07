@@ -44,6 +44,124 @@
        height="58.630975"
        id="rect872080" />
   </defs>
+  <style>
+    rect.cirth {
+      fill: #dedede;
+      stroke: #000000;
+      stroke-width: 0.300354;
+      stroke-miterlimit: 4;
+      stroke-dasharray: none;
+      stop-color: #000000;
+    }
+    rect.orthography {
+      fill: #dedede;
+      stroke: #ffffff;
+      stroke-width: 0.264583;
+      stroke-miterlimit: 4;
+      stroke-dasharray: none;
+      stroke-opacity: 1;
+      stop-color: #000000;
+    }
+    rect.number {
+      fill: #dedede;
+      stroke: #ffffff;
+      stroke-width: 0.268658;
+      stroke-miterlimit: 4;
+      stroke-dasharray: none;
+      stroke-opacity: 1;
+      stop-color: #000000;
+    }
+    rect.keystroke {
+      fill: #ffffff;
+      stroke: #000000;
+      stroke-width: 0.266067;
+      stroke-miterlimit: 4;
+      stroke-dasharray: none;
+      stop-color: #000000
+    }
+    rect.symbol {
+      fill: #dedede;
+      stroke: #ffffff;
+      stroke-width: 0.301239;
+      stroke-miterlimit: 4;
+      stroke-dasharray: none;
+      stroke-opacity: 1;
+      stop-color: #000000
+    }
+    text.number {
+      font-size: 3.88056px;
+      line-height: 1.25;
+      font-family: Merriweather;
+      -inkscape-font-specification: Merriweather;
+      text-align: center;
+      text-anchor: middle;
+      stroke-width: 0.264583
+    }
+    text.number tspan {
+      font-style: normal;
+      font-variant: normal;
+      font-weight: 500;
+      font-stretch: normal;
+      font-size: 3.88056px;
+      font-family: Alegreya;
+      -inkscape-font-specification: 'Alegreya Medium';
+      text-align: center;
+      text-anchor: middle;
+      fill: #000080;
+      stroke-width: 0.264583
+    }
+    text.keystroke {
+      font-size: 2.82222px;
+      line-height: 1.25;
+      font-family: Merriweather;
+      -inkscape-font-specification: Merriweather;
+      text-align: center;
+      text-anchor: middle;
+      stroke-width: 100;
+      stroke-miterlimit: 4;
+      stroke-dasharray: none
+    }
+    text.keystroke tspan {
+      font-style: normal;
+      font-variant: normal;
+      font-weight: normal;
+      font-stretch: normal;
+      font-size: 2.82222px;
+      font-family: 'Roboto Mono';
+      -inkscape-font-specification: 'Roboto Mono';
+      text-align: center;
+      text-anchor: middle;
+      stroke-width: 100;
+      stroke-miterlimit: 4;
+      stroke-dasharray: none
+    }
+    text.symbol {
+      font-size: 8.46667px;
+      line-height: 1.25;
+      font-family: 'Cirth Erebor';
+      -inkscape-font-specification: 'Cirth Erebor';
+      stroke-width: 0.264583
+    }
+    text.symbol tspan {
+      font-size: 8.46667px;
+      text-align: center;
+      text-anchor: middle
+    }
+    text.orthography {
+      font-size: 5.64444px;
+      line-height: 1.25;
+      font-family: Merriweather;
+      -inkscape-font-specification: Merriweather;
+      stroke-width: 0.264583
+    }
+    text.orthography tspan {
+      font-size: 5.64444px;
+      text-align: center;
+      text-anchor: middle;
+      fill: #008000;
+      stroke-width: 0.264583
+    }
+  </style>
   <g
      inkscape:label="Layer 1"
      id="layer1">
@@ -67,7 +185,7 @@
          inkscape:label="gCirth{{cirthLabel}}"
          transform="translate({{offset.x}},{{offset.y}})">
         <rect
-           style="fill:#dedede;stroke:#000000;stroke-width:0.300354;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+           class="cirth"
            id="rectCirth{{cirthId}}"
            width="13.746636"
            height="17.616295"
@@ -75,7 +193,7 @@
            y="74.632111"
            inkscape:label="rectCirth{{cirthLabel}}" />
         <rect
-           style="fill:#dedede;stroke:#ffffff;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+           class="orthography"
            id="rectOrthography{{cirthId}}"
            width="12.396894"
            height="6.4029703"
@@ -83,7 +201,7 @@
            y="85.101608"
            inkscape:label="rectOrthography{{cirthLabel}}" />
         <rect
-           style="fill:#dedede;stroke:#ffffff;stroke-width:0.268658;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+           class="number"
            id="rectCirthNumber{{cirthId}}"
            width="3.2942202"
            height="3.9646754"
@@ -91,7 +209,7 @@
            y="80.400475"
            inkscape:label="rectCirthNumber{{cirthLabel}}" />
         <rect
-           style="fill:#ffffff;stroke:#000000;stroke-width:0.266067;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+           class="keystroke"
            id="rectFontCharacter{{cirthId}}"
            width="3.2671371"
            height="3.9672663"
@@ -101,7 +219,7 @@
            ry="0.73480803"
            inkscape:label="rectFontCharacter{{cirthLabel}}" />
         <rect
-           style="fill:#dedede;stroke:#ffffff;stroke-width:0.301239;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+           class="symbol"
            id="rectCirthCharacter{{cirthId}}"
            width="7.7444348"
            height="9.0399456"
@@ -110,47 +228,43 @@
            inkscape:label="rectCirthCharacter{{cirthLabel}}" />
         <text
            xml:space="preserve"
-           style="font-size:3.88056px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:0.264583"
+           class="number"
            x="80.689865"
            y="83.343254"
            id="textCirthNumber{{cirthId}}"
            inkscape:label="textCirthNumber{{cirthLabel}}"><tspan
              sodipodi:role="line"
              id="tspanCirthNumber{{cirthId}}"
-             style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.88056px;font-family:Alegreya;-inkscape-font-specification:'Alegreya Medium';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
              x="80.689865"
              y="83.343254">{{cirthNumber}}</tspan></text>
         <text
            xml:space="preserve"
-           style="font-size:2.82222px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
+           class="keystroke"
            x="80.711098"
            y="78.354149"
            id="textFontCharacter{{cirthId}}"
            inkscape:label="textFontCharacter{{cirthLabel}}"><tspan
              sodipodi:role="line"
              id="tspanFontCharacter{{cirthId}}"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
              x="80.711098"
              y="78.354149">{{fontchar}}</tspan></text>
         <text
            xml:space="preserve"
-           style="font-size:8.46667px;line-height:1.25;font-family:'Cirth Erebor';-inkscape-font-specification:'Cirth Erebor';stroke-width:0.264583"
+           class="symbol"
            x="74.254303"
            y="84.139244"
            id="textCirthCharacter{{cirthId}}"
            inkscape:label="textCirthCharacter{{cirthLabel}}"><tspan
-             id="tspanCirthCharacter{{cirthId}}"
-             style="font-size:8.46667px;text-align:center;text-anchor:middle">{{fontchar}}</tspan></text>
+             id="tspanCirthCharacter{{cirthId}}">{{fontchar}}</tspan></text>
         <text
            xml:space="preserve"
-           style="font-size:5.64444px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;stroke-width:0.264583"
+           class="orthography"
            x="76.66555"
            y="90.498779"
            id="textOrthography{{cirthId}}"
            inkscape:label="textOrthography{{cirthLabel}}"><tspan
              sodipodi:role="line"
              id="tspanOrthography{{cirthId}}"
-             style="font-size:5.64444px;text-align:center;text-anchor:middle;fill:#008000;stroke-width:0.264583"
              x="76.66555"
              y="90.498779">{{orthography}}</tspan></text>
       </g>
