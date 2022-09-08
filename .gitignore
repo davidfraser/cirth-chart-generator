@@ -1,3 +1,6 @@
+# generated files
+cirth-chart-*.svg
+
 # Logs
 logs
 *.log
