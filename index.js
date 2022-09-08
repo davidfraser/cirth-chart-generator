@@ -10,6 +10,7 @@ const cirthData = {
         2: {fontchar: '2'},
         3: {fontchar: '3'},
         4: {fontchar: '4'},
+        5: {fontchar: '5'},
         6: {fontchar: '6'},
         7: {fontchar: '7'},
         8: {fontchar: '8'},
@@ -47,6 +48,10 @@ const cirthData = {
         39: {fontchar: 'l'},
         40: {fontchar: ';'},
         41: {fontchar: 'A'},
+        42: {fontchar: 'S'},
+        43: {fontchar: 'D'},
+        44: {fontchar: 'F'},
+        45: {fontchar: 'G'},
         46: {fontchar: 'z'},
         47: {fontchar: 'x'},
         48: {fontchar: 'c'},
@@ -74,6 +79,8 @@ const cirthData = {
         E5: {fontchar: '*'},
         E6: {fontchar: '('},
         E7: {fontchar: ')'},
+        U2D: {fontchar: 'ë'},
+        U2E: {fontchar: 'ì'},
         U46: {fontchar: 'æ'},
         U47: {fontchar: 'à'},
         U48: {fontchar: 'á'},
@@ -98,6 +105,9 @@ const cirthData = {
         U5D: {fontchar: 'è'},
         U5D_alt: {fontchar: 'ç'},
         U60: {fontchar: 'ö'},
+        U61: {fontchar: 'ø'},
+        U62: {fontchar: 'ù'},
+        U63: {fontchar: 'ú'},
         U64: {fontchar: '÷'}, //
         U65: {fontchar: 'ü'}, //
         U66: {fontchar: 'ý'}, //
@@ -108,6 +118,7 @@ const cirthData = {
         2: {orthography: 'b'},
         3: {orthography: 'f'},
         4: {orthography: 'v'},
+        5: {orthography: 'hw'},
         6: {orthography: 'm'},
         7: {orthography: 'mb'},
         8: {orthography: 't'},
@@ -144,6 +155,10 @@ const cirthData = {
         39: {orthography: 'i'},
         40: {orthography: 'y'},
         41: {orthography: 'hy'},
+        42: {orthography: 'u'},
+        43: {orthography: 'z'},
+        44: {orthography: 'w'},
+        45: {orthography: 'ü'},
         46: {orthography: 'e'},
         47: {orthography: 'ee'},
         48: {orthography: 'a'},
@@ -167,6 +182,8 @@ const cirthData = {
         E5: {orthography: 'ay'},
         E6: {orthography: 'ea'},
         E7: {orthography: 'oa'},
+        U2D: {orthography: 'iu'},
+        U2E: {orthography: 'ui'},
         U46: {orthography: 'ndž'},
         U47: {orthography: ''},
         U48: {orthography: ''},
@@ -191,6 +208,9 @@ const cirthData = {
         U5D: {orthography: ''},
         U5F: {orthography: ''},
         U60: {orthography: 'of', isWord: true},
+        U61: {orthography: 'y/ü'},
+        U62: {orthography: ''},
+        U63: {orthography: 'is', isWord: true},
         U64: {orthography: ''},
         U65: {orthography: 'ö/ø'},
         U66: {orthography: ''},
@@ -219,8 +239,11 @@ const cirthLayout = {
         {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41]},
         {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D']},
         {rowLabel: '10', cirth: [26, 11, 10, 8, 9, 24]},
+        {rowLabel: '10.5', cirth: ['U62', 'U61', 'U63', 43]},
         {rowLabel: '11', cirth: [21, 20, 18, 19]},
+        {rowLabel: '11.5', cirth: [44, 42, 'U2D', 45]},
         {rowLabel: '12', cirth: [34, 29, 30, 35]},
+        {rowLabel: '12.5', cirth: [5, SPACE, 'U2E', '45_alt']},
         {rowLabel: '13', cirth: [16, 15, 13, 14]},
         {rowLabel: '14', cirth: ['U55', 'U54', 'U52', 'U53']},
         {rowLabel: '15', cirth: [58, 57]},
@@ -237,8 +260,11 @@ const cirthLayout = {
         8: {leftchar: -3},
         9: {leftchar: -2},
         10: {leftchar: -3},
+        10.5: {leftchar: 3.5},
         11: {leftchar: -2},
+        11.5: {leftchar: 3.5},
         12: {leftchar: -2},
+        12.5: {leftchar: 3.5},
         13: {leftchar: -2},
         14: {leftchar: -2},
         15: {leftchar: -1},
@@ -252,7 +278,7 @@ function expandedLayout(layout, charLookup, orthLookup) {
     for (var layoutRow of layout['layoutRows']) {
         const rowLabel = layoutRow['rowLabel'];
         const rowOffset = layout['rowOffsets'][rowLabel];
-        var yOffset = parseInt(rowLabel)*18.4154-91.20655;
+        var yOffset = parseFloat(rowLabel)*18.4154-91.20655;
         var expandedRow = {'rowLabel': rowLabel, 'offset': {x: 0, y: yOffset}};
         var expandedChars = [];
         let indexOffset = 0;
