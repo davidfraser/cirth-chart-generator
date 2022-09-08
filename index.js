@@ -6,7 +6,6 @@ const cirthData = {
     title: "Angerthas Erebor",
     name: "angerthas-erebor",
     chars: {
-        0: {fontchar: ''},
         1: {fontchar: '1'},
         2: {fontchar: '2'},
         3: {fontchar: '3'},
@@ -22,10 +21,12 @@ const cirthData = {
         14: {fontchar: '$'},
         15: {fontchar: '%'},
         16: {fontchar: 'q'},
+        17: {fontchar: 'w'},
         18: {fontchar: 'e'},
         19: {fontchar: 'r'},
         20: {fontchar: 't'},
         21: {fontchar: 'y'},
+        22: {fontchar: 'u'},
         23: {fontchar: 'i'},
         24: {fontchar: 'o'},
         25: {fontchar: 'p'},
@@ -34,14 +35,45 @@ const cirthData = {
         28: {fontchar: 'E'},
         29: {fontchar: 'R'}, // This was T in the original chart, but that's wrong
         30: {fontchar: 'T'}, // This was R in the original chart, but that's wrong
+        31: {fontchar: 'k'},
+        32: {fontchar: 's'},
+        33: {fontchar: 'd'},
         34: {fontchar: 'f'},
         35: {fontchar: 'g'},
+        36: {fontchar: 'h'},
+        37: {fontchar: 'j'},
+        38: {fontchar: 'J'},
+        '38_alt': {fontchar: 'k'}, // which way round are these?
+        39: {fontchar: 'l'},
         40: {fontchar: ';'},
         41: {fontchar: 'A'},
+        46: {fontchar: 'z'},
+        47: {fontchar: 'x'},
+        48: {fontchar: 'c'},
+        49: {fontchar: 'v'},
+        50: {fontchar: 'b'},
+        51: {fontchar: 'n'},
+        '51_alt': {fontchar: 'M'}, // which way round are these?
+        52: {fontchar: '<'},
+        '52_alt': {fontchar: 'm'},
+        53: {fontchar: ','},
+        54: {fontchar: '.'},
+        55: {fontchar: '/'},
+        '55_alt': {fontchar: '>'},
+        56: {fontchar: 'Z'},
+        '56_alt': {fontchar: '?'},
         57: {fontchar: 'X'},
         58: {fontchar: 'C'},
+        59: {fontchar: 'V'},
         60: {fontchar: 'B'},
+        E1: {fontchar: 'K'},
         E2: {fontchar: ':'},
+        E3: {fontchar: '"'},
+        E4: {fontchar: '&'},
+        '#4': {fontchar: '+'},
+        E5: {fontchar: '*'},
+        E6: {fontchar: '('},
+        E7: {fontchar: ')'},
         U46: {fontchar: 'æ'},
         U47: {fontchar: 'à'},
         U48: {fontchar: 'á'},
@@ -50,13 +82,25 @@ const cirthData = {
         U4B: {fontchar: 'ä'},
         U4C: {fontchar: 'å'},
         U4D: {fontchar: 'é'},
+        U4F: {fontchar: 'ê'},
+        U50: {fontchar: 'í'},
         U52: {fontchar: 'Ü'},
         U53: {fontchar: 'Ý'},
+        // U53: {fontchar: 'û'}, // this is a double-numbered one
         U54: {fontchar: 'Þ'},
         U55: {fontchar: 'ß'},
+        U56: {fontchar: 'ð'}, //
+        U58: {fontchar: 'ò'}, //
+        U59: {fontchar: 'ó'}, //
+        U5A: {fontchar: 'î'},
+        U5B: {fontchar: 'ï'},
+        U5C: {fontchar: 'õ'}, //
         U5D: {fontchar: 'è'},
         U5D_alt: {fontchar: 'ç'},
         U60: {fontchar: 'ö'},
+        U64: {fontchar: '÷'}, //
+        U65: {fontchar: 'ü'}, //
+        U66: {fontchar: 'ý'}, //
     }, 
     orthography: {
         0: {orthography: ''},
@@ -75,10 +119,12 @@ const cirthData = {
         14: {orthography: 'j'},
         15: {orthography: 'sh'},
         16: {orthography: 'zh'},
+        17: {orthography: 'ks'},
         18: {orthography: 'k'},
         19: {orthography: 'g'},
         20: {orthography: 'kh'},
         21: {orthography: 'gh'},
+        22: {orthography: 'n'},
         23: {orthography: 'kw'},
         24: {orthography: 'gw'},
         25: {orthography: 'khw'},
@@ -87,14 +133,40 @@ const cirthData = {
         28: {orthography: 'nw'},
         29: {orthography: 'g'},
         30: {orthography: 'gh'},
+        31: {orthography: 'l'},
+        32: {orthography: ''},
+        33: {orthography: 'nd'},
         34: {orthography: 's'},
         35: {orthography: 's'},
+        36: {orthography: 'ŋ'},
+        37: {orthography: 'ng'},
+        38: {orthography: 'ou'},
+        39: {orthography: 'i'},
         40: {orthography: 'y'},
         41: {orthography: 'hy'},
+        46: {orthography: 'e'},
+        47: {orthography: 'ee'},
+        48: {orthography: 'a'},
+        49: {orthography: 'aa'},
+        50: {orthography: 'o'},
+        51: {orthography: 'oo'},
+        52: {orthography: 'ö'},
+        53: {orthography: 'n'},
+        54: {orthography: 'h'},
+        55: {orthography: 'ə'}, // unstressed schwa
+        56: {orthography: 'ʌ'}, // stressed schwa
         57: {orthography: 'ps'},
         58: {orthography: 'ts'},
+        59: {orthography: '+h'},
         60: {orthography: '&', isWord: true},
+        E1: {orthography: 'eu'},
         E2: {orthography: 'll'},
+        E3: {orthography: 'the', isWord: true},
+        '#4': {orthography: '(4)'},
+        E4: {orthography: 'ai'},
+        E5: {orthography: 'ay'},
+        E6: {orthography: 'ea'},
+        E7: {orthography: 'oa'},
         U46: {orthography: 'ndž'},
         U47: {orthography: ''},
         U48: {orthography: ''},
@@ -103,24 +175,46 @@ const cirthData = {
         U4B: {orthography: ''},
         U4C: {orthography: 'nd'},
         U4D: {orthography: ''},
+        U4F: {orthography: ''},
+        U50: {orthography: 'au'},
         U52: {orthography: 'ps'},
         U53: {orthography: 'bz'},
+        // U53: {orthography: 'ae'}, // This duplicate showed me that all the unicode references are wrong :( :( :(
         U54: {orthography: 'ks'},
         U55: {orthography: 'gz'},
+        U56: {orthography: 'o'},
+        U58: {orthography: 'oo'},
+        U59: {orthography: 'ou'},
+        U5A: {orthography: 'eu'},
+        U5B: {orthography: 'ou'},
+        U5C: {orthography: ''},
         U5D: {orthography: ''},
-        U5D_alt: {orthography: ''},
         U5F: {orthography: ''},
         U60: {orthography: 'of', isWord: true},
+        U64: {orthography: ''},
+        U65: {orthography: 'ö/ø'},
+        U66: {orthography: ''},
     }, 
 }
 
 const HALF_SPACE = {'special': 'half-space'};
 const FULL_SPACE = {'special': 'full-space'};
 const SPACE = FULL_SPACE;
+const DOUBLE_PIPE = FULL_SPACE; // FIXME: Double Pipe is a character we don't know what to do with yet
+const PUNCT_STAR = FULL_SPACE; // FIXME: Punct Star is a character we don't know what to do with yet
+const PUNCT_CROSS = FULL_SPACE; // FIXME: Punct Cross is a character we don't know what to do with yet
+const FUTHORC_EH = FULL_SPACE; // FIXME: Futhorc Eh is a character we don't know what to do with yet
+const E_ = FULL_SPACE; // Erebor underscore??
 
 const cirthLayout = {
     layoutRows: [
         // {rowLabel: '0', cirth: []},
+        {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1']},
+        {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, 38, '38_alt', 'U4F']},
+        {rowLabel: '3', cirth: [53, SPACE, 54, '52_alt', 'E7', 'E6', 'E4', 'U50', 'E5']},
+        {rowLabel: '4', cirth: ['U5B', 'U59', 22, 33, 17, 52, 'U5A', SPACE, 'U53', 48, 49]},
+        {rowLabel: '5', cirth: [PUNCT_STAR, PUNCT_CROSS, 36, 37]},
+        {rowLabel: '6', cirth: [31, '56_alt', 56, 'E3', 39, 59, 55, '55_alt', 32, DOUBLE_PIPE, 46, 47]},
         {rowLabel: '7', cirth: ['U46', 27, 12, 'U4B', 'U4C', SPACE, HALF_SPACE, SPACE, SPACE, 'E2']},
         {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41]},
         {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D']},
@@ -133,6 +227,12 @@ const cirthLayout = {
         {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6]},
     ],
     rowOffsets: {
+        1: {leftchar: -3.5},
+        2: {leftchar: -3.5},
+        3: {leftchar: -1.5},
+        4: {leftchar: -3.5},
+        5: {leftchar: -2.5},
+        6: {leftchar: -4.5},
         7: {leftchar: -3},
         8: {leftchar: -3},
         9: {leftchar: -2},
@@ -172,13 +272,17 @@ function expandedLayout(layout, charLookup, orthLookup) {
                 cirthLabel = cirthLabel.replace('U', 'Uxx');
                 cirthStyle = 'cirthUnicode';
                 cirthDisplayNumber = cirthDisplayNumber.replace('U', '').toLowerCase();
-                if (cirthDisplayNumber.endsWith('_alt')) {
-                    cirthDisplayNumber = cirthDisplayNumber.replace('_alt', '*');
-                }
             } else if (cirthLabel.startsWith('E')) {
                 cirthLabel = cirthLabel.replace('E', 'Erebor');
                 cirthStyle = 'cirthErebor';
                 cirthDisplayNumber = cirthDisplayNumber.toLowerCase();
+            } else if (cirthLabel.startsWith('#')) {
+                cirthLabel = cirthLabel.replace('#', 'Numeral');
+                cirthStyle = 'cirthErebor';
+                cirthDisplayNumber = cirthDisplayNumber.toLowerCase();
+            }
+            if (cirthDisplayNumber.endsWith('_alt')) {
+                cirthDisplayNumber = cirthDisplayNumber.replace('_alt', '*');
             }
             var charInfo = Object.assign({}, charLookup[cirthNumber]);
             if (charInfo['isWord'] == true) {
@@ -188,7 +292,8 @@ function expandedLayout(layout, charLookup, orthLookup) {
             charInfo['cirthId'] = cirthId;
             charInfo['cirthLabel'] = cirthLabel;
             charInfo['cirthStyle'] = cirthStyle;
-            var orthInfo = orthLookup[cirthNumber];
+            var orthInfo = orthLookup[cirthId.replace('_alt', '')];
+            if (orthInfo === undefined) { console.error(`Couldn't find orthography for ${cirthNumber}`)}
             if (orthInfo.orthography == '') orthInfo.orthography = '-';
             charInfo = Object.assign(charInfo, orthInfo);
             var charOffset = (index + indexOffset + rowOffset['leftchar'])*16.68 + 11.625;
