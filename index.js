@@ -5,11 +5,11 @@ const { isNumberObject } = require('util/types');
 const HALF_SPACE = {'special': 'half-space'};
 const FULL_SPACE = {'special': 'full-space'};
 const SPACE = FULL_SPACE;
-const DOUBLE_PIPE = FULL_SPACE; // FIXME: Double Pipe is a character we don't know what to do with yet
-const PUNCT_STAR = FULL_SPACE; // FIXME: Punct Star is a character we don't know what to do with yet
-const PUNCT_CROSS = FULL_SPACE; // FIXME: Punct Cross is a character we don't know what to do with yet
-const FUTHORC_EH = FULL_SPACE; // FIXME: Futhorc Eh is a character we don't know what to do with yet
-const E_ = FULL_SPACE; // Erebor underscore??
+const DOUBLE_PIPE = '||'; // FIXME: Double Pipe is a character we don't know what to do with yet
+const PUNCT_STAR = 'P*'; // FIXME: Punct Star is a character we don't know what to do with yet
+const PUNCT_CROSS = 'PX'; // FIXME: Punct Cross is a character we don't know what to do with yet
+const FUTHORC_EH = 'EH'; // Futhorc Eh is a character in the font, but did Tolkien ever use it in the Cirth?
+const E_ = 'E_'; // Erebor underscore??
 const CIRTH_PUNCT_MID_DOT = 'P49';
 const CIRTH_PUNCT_DOT = 'P5C';
 const CIRTH_PUNCT_TWO_DOTS = 'P4F';
@@ -96,6 +96,8 @@ const cirthData = {
         E5: {keystroke: '*'},
         E6: {keystroke: '('},
         E7: {keystroke: ')'},
+        E_: {keystroke: '_'},
+        [FUTHORC_EH]: {keystroke: 'ñ'},
         U2D: {keystroke: 'ë'},
         U2E: {keystroke: 'ì'},
         U46: {keystroke: 'æ'},
@@ -129,6 +131,9 @@ const cirthData = {
         U64: {keystroke: '÷'}, //
         U65: {keystroke: 'ü'}, //
         U66: {keystroke: 'ý'}, //
+        [DOUBLE_PIPE]: {keystroke: '|'},
+        [PUNCT_STAR]: {keystroke: 'U'},
+        [PUNCT_CROSS]: {keystroke: ']'},
         [CIRTH_PUNCT_MID_DOT]: {keystroke: 'I'},
         [CIRTH_PUNCT_DOT]: {keystroke: '\\'},
         [CIRTH_PUNCT_TWO_DOTS]: {keystroke: 'O'},
@@ -207,6 +212,8 @@ const cirthData = {
         E5: {orthography: 'ay'},
         E6: {orthography: 'ea'},
         E7: {orthography: 'oa'},
+        E_: {orthography: ''},
+        [FUTHORC_EH]: {orthography: ''},
         U2D: {orthography: 'iu'},
         U2E: {orthography: 'ui'},
         U46: {orthography: 'ndž'},
@@ -239,6 +246,9 @@ const cirthData = {
         U64: {orthography: ''},
         U65: {orthography: 'ö/ø'},
         U66: {orthography: ''},
+        [DOUBLE_PIPE]: {orthography: ''},
+        [PUNCT_STAR]: {orthography: '*'},
+        [PUNCT_CROSS]: {orthography: ''},
     }, 
 }
 
@@ -299,6 +309,10 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
         cirthLabel = cirthLabel.replace('#', 'Numeral');
         cirthStyle = 'cirthErebor';
         cirthDisplayNumber = cirthDisplayNumber.toLowerCase();
+    } else if (cirthLabel.startsWith('P')) {
+        cirthLabel = cirthLabel.replace('P', 'Punct');
+        cirthStyle = 'cirthUnicode';
+        cirthDisplayNumber = '?'; // cirthDisplayNumber.replace('P', '').toLowerCase();
     }
     if (cirthDisplayNumber.endsWith('_alt')) {
         cirthDisplayNumber = cirthDisplayNumber.replace('_alt', '*');
