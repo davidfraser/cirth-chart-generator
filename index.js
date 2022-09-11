@@ -2,6 +2,22 @@ const mustache = require('mustache');
 const fs = require('fs');
 const { isNumberObject } = require('util/types');
 
+const HALF_SPACE = {'special': 'half-space'};
+const FULL_SPACE = {'special': 'full-space'};
+const SPACE = FULL_SPACE;
+const DOUBLE_PIPE = FULL_SPACE; // FIXME: Double Pipe is a character we don't know what to do with yet
+const PUNCT_STAR = FULL_SPACE; // FIXME: Punct Star is a character we don't know what to do with yet
+const PUNCT_CROSS = FULL_SPACE; // FIXME: Punct Cross is a character we don't know what to do with yet
+const FUTHORC_EH = FULL_SPACE; // FIXME: Futhorc Eh is a character we don't know what to do with yet
+const E_ = FULL_SPACE; // Erebor underscore??
+const CIRTH_PUNCT_MID_DOT = 'P49';
+const CIRTH_PUNCT_DOT = 'P5C';
+const CIRTH_PUNCT_TWO_DOTS = 'P4F';
+const CIRTH_PUNCT_THREE_DOTS = 'P50';
+const CIRTH_PUNCT_THREE_DOTS_L = 'P50';
+const CIRTH_PUNCT_FOUR_DOTS = 'P7D';
+const CIRTH_PUNCT_EQUAL = 'P=';
+
 const cirthData = {
     title: "Angerthas Erebor",
     name: "angerthas-erebor",
@@ -218,22 +234,6 @@ const cirthData = {
         U66: {orthography: ''},
     }, 
 }
-
-const HALF_SPACE = {'special': 'half-space'};
-const FULL_SPACE = {'special': 'full-space'};
-const SPACE = FULL_SPACE;
-const DOUBLE_PIPE = FULL_SPACE; // FIXME: Double Pipe is a character we don't know what to do with yet
-const PUNCT_STAR = FULL_SPACE; // FIXME: Punct Star is a character we don't know what to do with yet
-const PUNCT_CROSS = FULL_SPACE; // FIXME: Punct Cross is a character we don't know what to do with yet
-const FUTHORC_EH = FULL_SPACE; // FIXME: Futhorc Eh is a character we don't know what to do with yet
-const E_ = FULL_SPACE; // Erebor underscore??
-const CIRTH_PUNCT_MID_DOT = 'P49';
-const CIRTH_PUNCT_DOT = 'P5C';
-const CIRTH_PUNCT_TWO_DOTS = 'P4F';
-const CIRTH_PUNCT_THREE_DOTS = 'P50';
-const CIRTH_PUNCT_THREE_DOTS_L = 'P50';
-const CIRTH_PUNCT_FOUR_DOTS = 'P7D';
-const CIRTH_PUNCT_EQUAL = 'P=';
 
 const cirthLayout = {
     cirthRows: [
