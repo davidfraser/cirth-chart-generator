@@ -272,6 +272,12 @@ const cirthLayout = {
     },
 }
 
+// TODO: automate the punctuation block template generation
+// TODO: Add the Unicode codepoint for information somewhere, including for the regular characters
+// TODO: change the keystrokes for these U items to be the hex sequence you can enter them with for the Erebor font with Alt-NumPad+
+// TODO: correct the names of these U items to be consistent
+// TODO: change the numbers that are displayed for these U times to be consistent
+
 function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
     var cirthId = typeof cirthNumber == 'number' ? cirthNumber.toString() : cirthNumber;
     var cirthLabel = cirthId;
