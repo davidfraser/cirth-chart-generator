@@ -110,11 +110,11 @@ const cirthData = {
         U4D: {keystroke: 'é'},
         U4F: {keystroke: 'ê'},
         U50: {keystroke: 'í'},
-        U52: {keystroke: 'Ü'},
-        U53: {keystroke: 'Ý'},
-        // U53: {keystroke: 'û'}, // this is a double-numbered one
-        U54: {keystroke: 'Þ'},
-        U55: {keystroke: 'ß'},
+        U42: {keystroke: 'Ü'},
+        U43: {keystroke: 'Ý'},
+        U44: {keystroke: 'Þ'},
+        U45: {keystroke: 'ß'},
+        U53: {keystroke: 'û'},
         U56: {keystroke: 'ð'}, //
         U58: {keystroke: 'ò'}, //
         U59: {keystroke: 'ó'}, //
@@ -226,11 +226,11 @@ const cirthData = {
         U4D: {orthography: ''},
         U4F: {orthography: ''},
         U50: {orthography: 'au'},
-        U52: {orthography: 'ps'},
-        U53: {orthography: 'bz'},
-        // U53: {orthography: 'ae'}, // This duplicate showed me that all the unicode references are wrong :( :( :(
-        U54: {orthography: 'ks'},
-        U55: {orthography: 'gz'},
+        U42: {orthography: 'ps'},
+        U43: {orthography: 'bz'},
+        U44: {orthography: 'ks'},
+        U45: {orthography: 'gz'},
+        U53: {orthography: 'ae'},
         U56: {orthography: 'o'},
         U58: {orthography: 'oo'},
         U59: {orthography: 'ou'},
@@ -270,7 +270,7 @@ const cirthLayout = {
         {rowLabel: '12', cirth: [34, 29, 30, 35], leftchar: -2},
         {rowLabel: '12.5', cirth: [5, SPACE, 'U2E', '45_alt'], leftchar: 3.5},
         {rowLabel: '13', cirth: [16, 15, 13, 14], leftchar: -2},
-        {rowLabel: '14', cirth: ['U55', 'U54', 'U52', 'U53'], leftchar: -2},
+        {rowLabel: '14', cirth: ['U45', 'U44', 'U42', 'U43'], leftchar: -2},
         {rowLabel: '15', cirth: [58, 57], leftchar: -1},
         {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6], leftchar: -4},
     ],
