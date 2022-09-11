@@ -227,8 +227,7 @@ const FUTHORC_EH = FULL_SPACE; // FIXME: Futhorc Eh is a character we don't know
 const E_ = FULL_SPACE; // Erebor underscore??
 
 const cirthLayout = {
-    layoutRows: [
-        // {rowLabel: '0', cirth: []},
+    cirthRows: [
         {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1']},
         {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, 38, '38_alt', 'U4F']},
         {rowLabel: '3', cirth: [53, SPACE, 54, '52_alt', 'E7', 'E6', 'E4', 'U50', 'E5']},
@@ -274,15 +273,16 @@ const cirthLayout = {
 
 function expandedLayout(layout, charLookup, orthLookup) {
     // this includes the relevant character information into the layout
-    var expandedLayout = [];
-    for (var layoutRow of layout['layoutRows']) {
-        const rowLabel = layoutRow['rowLabel'];
+    var cirthLayout = [];
+    var punctuationLayout = [];
+    for (var cirthRow of layout['cirthRows']) {
+        const rowLabel = cirthRow['rowLabel'];
         const rowOffset = layout['rowOffsets'][rowLabel];
         var yOffset = parseFloat(rowLabel)*18.4154-91.20655;
         var expandedRow = {'rowLabel': rowLabel, 'offset': {x: 0, y: yOffset}};
         var expandedChars = [];
         let indexOffset = 0;
-        for (let [index, cirthNumber] of layoutRow['cirth'].entries()) {
+        for (let [index, cirthNumber] of cirthRow['cirth'].entries()) {
             if (cirthNumber == HALF_SPACE) {
                 indexOffset -= 0.5;
                 continue
@@ -327,9 +327,9 @@ function expandedLayout(layout, charLookup, orthLookup) {
             expandedChars.push(charInfo);
         }
         expandedRow['cirth'] = expandedChars;
-        expandedLayout.push(expandedRow);
+        cirthLayout.push(expandedRow);
     }
-    return {'layoutRows': expandedLayout};
+    return {'cirthRows': cirthLayout, 'punctuationRows': punctuationLayout};
 }
 
 try {
