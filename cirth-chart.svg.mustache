@@ -573,313 +573,81 @@
          x="118.24999"
          y="276.71863"
          id="tspan1469133" /></text>
+    {{#punctuationRows}}
     <g
-       id="g1573470"
-       transform="translate(0,3.1750001)"
-       inkscape:label="gPunctuation">
-       {{#cirthPunctuation}}
+       id="gPunctuationRow{{rowLabel}}"
+       transform="translate({{offset.x}},{{offset.y}})"
+       inkscape:label="gPunctuationRow{{rowLabel}}">
+      {{#cirth}}
       <g
          id="gCirth{{cirthId}}"
          class="{{cirthStyle}}"
          inkscape:label="gCirth{{gCirthLabel}}"
-         transform="translate(-15.225778,-33.258534)">
+         transform="translate({{offset.x}},{{offset.y}})">
         <rect
            class="cirth"
            id="rectCirth{{cirthId}}"
+           {{#widechar}}
            width="11.629047"
            height="9.1290474"
-           x="211.25479"
-           y="180.07848"
+           {{/widechar}}
+           {{^widechar}}
+           width="9.1698618"
+           height="9.1698618"
+           {{/widechar}}
+           x="69.792236"
+           y="74.632111"
            inkscape:label="rectCirth{{cirthLabel}}" />
         <text
            xml:space="preserve"
            style="font-size:8.46667px;line-height:1.25;font-family:'Cirth Erebor';-inkscape-font-specification:'Cirth Erebor';stroke-width:0.264583"
-           x="211.77452"
-           y="188.83208"
-           id="text45621"><tspan
-             id="tspan45619"
-             style="font-size:8.46667px">=</tspan></text>
+           {{#widechar}}
+           x="70.292236"
+           {{/widechar}}
+           {{^widechar}}
+           x="71.292236"
+           {{/widechar}}
+           y="83.432111"
+           id="textCirthCharacter{{cirthId}}"
+           inkscape:label="textCirthCharacter{{cirthId}}"><tspan
+             id="tspanCirthCharacter{{cirthId}}"
+             style="font-size:8.46667px">{{keystroke}}</tspan></text>
         <rect
            style="fill:#ffffff;stroke:#000000;stroke-width:0.266067;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
-           id="rect120276-4-88-7"
+           id="rectFontCharacter{{cirthId}}"
            width="3.2671371"
            height="3.9672663"
-           x="218.97237"
-           y="180.73969"
+           {{#widechar}}
+           x="77.526236"
+           {{/widechar}}
+           {{^widechar}}
+           x="75.036236"
+           {{/widechar}}
+           y="75.310111"
            rx="0.79082197"
            ry="0.73480803"
            inkscape:label="rectFontCharacter" />
         <text
            xml:space="preserve"
            style="font-size:2.82222px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-           x="220.59904"
-           y="183.62317"
+           {{#widechar}}
+           x="79.026236"
+           {{/widechar}}
+           {{^widechar}}
+           x="76.606236"
+           {{/widechar}}
+           y="78.140111"
            id="text117214-1-93-9"
            inkscape:label="textFontCharacter"><tspan
              sodipodi:role="line"
              id="tspan117212-2-63-0"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-             x="220.59904"
-             y="183.62317">=</tspan></text>
+             x="78.726236"
+             y="78.310111">{{keystroke}}</tspan></text>
       </g>
-      {{/cirthPunctuation}}
-      <g
-         id="g1573401"
-         transform="translate(-28.376378,-12.133952)">
-        <rect
-           style="fill:#dedede;stroke:#000000;stroke-width:0.330139;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-           id="rect1443-3-1-729-7"
-           width="9.1698618"
-           height="9.1698618"
-           x="213.73438"
-           y="158.93349"
-           inkscape:label="rectCirthCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:8.46667px;line-height:1.25;font-family:'Cirth Erebor';-inkscape-font-specification:'Cirth Erebor';stroke-width:0.264583"
-           x="215.41949"
-           y="167.73228"
-           id="text26637"><tspan
-             id="tspan26635"
-             style="font-size:8.46667px">{</tspan></text>
-        <rect
-           style="fill:#ffffff;stroke:#000000;stroke-width:0.266067;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
-           id="rect120276-4-88-1"
-           width="3.2671371"
-           height="3.9672663"
-           x="218.97237"
-           y="159.48515"
-           rx="0.79082197"
-           ry="0.73480803"
-           inkscape:label="rectFontCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:2.82222px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-           x="220.54185"
-           y="162.3466"
-           id="text117214-1-93-2"
-           inkscape:label="textFontCharacter"><tspan
-             sodipodi:role="line"
-             id="tspan117212-2-63-8"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-             x="220.54185"
-             y="162.3466">{</tspan></text>
-      </g>
-      <g
-         id="g1573393"
-         transform="translate(-28.376381,-12.133952)">
-        <rect
-           style="fill:#dedede;stroke:#000000;stroke-width:0.330139;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-           id="rect1443-3-1-729-1"
-           width="9.1698618"
-           height="9.1698618"
-           x="213.73438"
-           y="148.37117"
-           inkscape:label="rectCirthCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:8.46667px;line-height:1.25;font-family:'Cirth Erebor';-inkscape-font-specification:'Cirth Erebor';stroke-width:0.264583"
-           x="215.37071"
-           y="157.38611"
-           id="text26633"><tspan
-             id="tspan26631"
-             style="font-size:8.46667px">P</tspan></text>
-        <rect
-           style="fill:#ffffff;stroke:#000000;stroke-width:0.266067;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
-           id="rect120276-4-88-72"
-           width="3.2671371"
-           height="3.9672663"
-           x="218.97237"
-           y="148.92284"
-           rx="0.79082197"
-           ry="0.73480803"
-           inkscape:label="rectFontCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:2.82222px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-           x="220.53221"
-           y="151.78429"
-           id="text117214-1-93-3"
-           inkscape:label="textFontCharacter"><tspan
-             sodipodi:role="line"
-             id="tspan117212-2-63-51"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-             x="220.53221"
-             y="151.78429">P</tspan></text>
-      </g>
-      <g
-         id="g1573385"
-         transform="translate(-39.026991,19.601)">
-        <rect
-           style="fill:#dedede;stroke:#000000;stroke-width:0.330139;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-           id="rect1443-3-1-729-77"
-           width="9.1698618"
-           height="9.1698618"
-           x="213.73438"
-           y="137.80887"
-           inkscape:label="rectCirthCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:8.46667px;line-height:1.25;font-family:'Cirth Erebor';-inkscape-font-specification:'Cirth Erebor';stroke-width:0.264583"
-           x="215.39255"
-           y="146.65729"
-           id="text26629"><tspan
-             id="tspan26627"
-             style="font-size:8.46667px">O</tspan></text>
-        <rect
-           style="fill:#ffffff;stroke:#000000;stroke-width:0.266067;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
-           id="rect120276-4-88-18"
-           width="3.2671371"
-           height="3.9672663"
-           x="218.97237"
-           y="138.36053"
-           rx="0.79082197"
-           ry="0.73480803"
-           inkscape:label="rectFontCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:2.82222px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-           x="220.60732"
-           y="141.22198"
-           id="text117214-1-93-6"
-           inkscape:label="textFontCharacter"><tspan
-             sodipodi:role="line"
-             id="tspan117212-2-63-6"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-             x="220.60732"
-             y="141.22198">O</tspan></text>
-      </g>
-      <g
-         id="g1573377"
-         transform="translate(-39.026988,19.601)">
-        <rect
-           style="fill:#dedede;stroke:#000000;stroke-width:0.330139;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-           id="rect1443-3-1-729-6"
-           width="9.1698608"
-           height="9.1698608"
-           x="213.73438"
-           y="127.24656"
-           inkscape:label="rectCirthCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:8.46667px;line-height:1.25;font-family:'Cirth Erebor';-inkscape-font-specification:'Cirth Erebor';stroke-width:0.264583"
-           x="215.2576"
-           y="134.80048"
-           id="text26689"><tspan
-             id="tspan26687"
-             style="font-size:8.46667px">\</tspan></text>
-        <rect
-           style="fill:#ffffff;stroke:#000000;stroke-width:0.266067;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
-           id="rect120276-4-88-0"
-           width="3.2671371"
-           height="3.9672663"
-           x="218.97237"
-           y="127.79823"
-           rx="0.79082197"
-           ry="0.73480803"
-           inkscape:label="rectFontCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:2.82222px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-           x="220.60042"
-           y="130.65968"
-           id="text117214-1-93-5"
-           inkscape:label="textFontCharacter"><tspan
-             sodipodi:role="line"
-             id="tspan117212-2-63-4"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-             x="220.60042"
-             y="130.65968">\</tspan></text>
-      </g>
-      <g
-         id="g1573369"
-         transform="translate(-39.085327,19.542664)">
-        <rect
-           style="fill:#dedede;stroke:#000000;stroke-width:0.330139;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-           id="rect1443-3-1-729-2"
-           width="9.1698618"
-           height="9.1698618"
-           x="213.73438"
-           y="116.68426"
-           inkscape:label="rectCirthCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:8.46667px;line-height:1.25;font-family:'Cirth Erebor';-inkscape-font-specification:'Cirth Erebor';stroke-width:0.264583"
-           x="215.27452"
-           y="125.87144"
-           id="text26625"><tspan
-             id="tspan26623"
-             style="font-size:8.46667px">I</tspan></text>
-        <rect
-           style="fill:#ffffff;stroke:#000000;stroke-width:0.266067;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
-           id="rect120276-4-88-3"
-           width="3.2671371"
-           height="3.9672663"
-           x="218.97237"
-           y="117.23592"
-           rx="0.79082197"
-           ry="0.73480803"
-           inkscape:label="rectFontCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:2.82222px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-           x="220.60663"
-           y="120.09737"
-           id="text117214-1-93-98"
-           inkscape:label="textFontCharacter"><tspan
-             sodipodi:role="line"
-             id="tspan117212-2-63-7"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-             x="220.60663"
-             y="120.09737">I</tspan></text>
-      </g>
-      <g
-         id="g1573410"
-         transform="translate(-28.376381,-12.133952)">
-        <g
-           id="g1560663"
-           transform="matrix(1.0718416,0,0,0.99875246,-33.902759,19.555784)">
-          <rect
-             style="fill:#dedede;stroke:#000000;stroke-width:0.319075;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-             id="rect1443-3-1-729-0"
-             width="8.5441761"
-             height="9.1927919"
-             x="231.04446"
-             y="150.12154"
-             inkscape:label="rectCirthCharacter" />
-          <text
-             xml:space="preserve"
-             style="font-size:8.46667px;line-height:1.25;font-family:'Cirth Erebor';-inkscape-font-specification:'Cirth Erebor';stroke-width:0.264583"
-             x="232.46236"
-             y="158.9259"
-             id="text26641"><tspan
-               id="tspan26639"
-               style="font-size:8.46667px">}</tspan></text>
-        </g>
-        <rect
-           style="fill:#ffffff;stroke:#000000;stroke-width:0.266067;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
-           id="rect120276-4-88-6"
-           width="3.2671371"
-           height="3.9672663"
-           x="218.97237"
-           y="170.04948"
-           rx="0.79082197"
-           ry="0.73480803"
-           inkscape:label="rectFontCharacter" />
-        <text
-           xml:space="preserve"
-           style="font-size:2.82222px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-           x="220.54185"
-           y="172.8813"
-           id="text117214-1-93-0"
-           inkscape:label="textFontCharacter"><tspan
-             sodipodi:role="line"
-             id="tspan117212-2-63-5"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
-             x="220.54185"
-             y="172.8813">}</tspan></text>
-      </g>
+      {{/cirth}}
     </g>
+    {{/punctuationRows}}
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;stroke-width:0.264583"

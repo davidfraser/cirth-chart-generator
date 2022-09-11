@@ -129,6 +129,13 @@ const cirthData = {
         U64: {keystroke: '÷'}, //
         U65: {keystroke: 'ü'}, //
         U66: {keystroke: 'ý'}, //
+        [CIRTH_PUNCT_MID_DOT]: {keystroke: 'I'},
+        [CIRTH_PUNCT_DOT]: {keystroke: '\\'},
+        [CIRTH_PUNCT_TWO_DOTS]: {keystroke: 'O'},
+        [CIRTH_PUNCT_THREE_DOTS]: {keystroke: 'P'},
+        [CIRTH_PUNCT_THREE_DOTS_L]: {keystroke: '{'},
+        [CIRTH_PUNCT_FOUR_DOTS]: {keystroke: '}'},
+        [CIRTH_PUNCT_EQUAL]: {keystroke: '='},
     }, 
     orthography: {
         0: {orthography: ''},
@@ -264,7 +271,6 @@ const cirthLayout = {
     ],
 }
 
-// TODO: automate the punctuation block template generation
 // TODO: Add the Unicode codepoint for information somewhere, including for the regular characters
 // TODO: change the keystrokes for these U items to be the hex sequence you can enter them with for the Erebor font with Alt-NumPad+
 // TODO: correct the names of these U items to be consistent
@@ -305,11 +311,13 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
     charInfo['cirthId'] = cirthId;
     charInfo['cirthLabel'] = cirthLabel;
     charInfo['cirthStyle'] = cirthStyle;
-    var orthInfo = orthLookup[cirthId.replace('_alt', '')];
-    if (orthInfo === undefined) { console.error(`Couldn't find orthography for ${cirthNumber}`); }
-    if (orthInfo.orthography == '')
-        orthInfo.orthography = '-';
-    charInfo = Object.assign(charInfo, orthInfo);
+    if (orthLookup !== false) {
+        var orthInfo = orthLookup[cirthId.replace('_alt', '')];
+        if (orthInfo === undefined) { console.error(`Couldn't find orthography for ${cirthNumber}`); }
+        if (orthInfo.orthography == '')
+            orthInfo.orthography = '-';
+        charInfo = Object.assign(charInfo, orthInfo);
+    }
     return charInfo;
 }
 
@@ -339,6 +347,30 @@ function expandedLayout(layout, charLookup, orthLookup) {
         }
         expandedRow['cirth'] = expandedChars;
         cirthLayout.push(expandedRow);
+    }
+    for (var cirthRow of layout['punctuationRows']) {
+        const rowLabel = cirthRow['rowLabel'];
+        const rowOffset = cirthRow.leftchar;
+        var yOffset = parseFloat(rowLabel)*18.4154-91.20655;
+        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: 0, y: yOffset}};
+        var expandedChars = [];
+        let indexOffset = 0;
+        for (let [index, cirthNumber] of cirthRow['cirth'].entries()) {
+            if (cirthNumber == HALF_SPACE) {
+                indexOffset -= 0.5;
+                continue
+            }
+            if (cirthNumber == FULL_SPACE) {
+                continue;
+            }
+            var charInfo = compileCirthInfo(cirthNumber, charLookup, false);
+            var charOffset = (index + indexOffset + rowOffset)*10.709 - 3;
+            charInfo['offset'] = {x: charOffset, y: 0};
+            charInfo['widechar'] = (cirthNumber == CIRTH_PUNCT_EQUAL);
+            expandedChars.push(charInfo);
+        }
+        expandedRow['cirth'] = expandedChars;
+        punctuationLayout.push(expandedRow);
     }
     return {'cirthRows': cirthLayout, 'punctuationRows': punctuationLayout};
 }
