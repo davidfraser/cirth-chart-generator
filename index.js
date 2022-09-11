@@ -226,6 +226,13 @@ const PUNCT_STAR = FULL_SPACE; // FIXME: Punct Star is a character we don't know
 const PUNCT_CROSS = FULL_SPACE; // FIXME: Punct Cross is a character we don't know what to do with yet
 const FUTHORC_EH = FULL_SPACE; // FIXME: Futhorc Eh is a character we don't know what to do with yet
 const E_ = FULL_SPACE; // Erebor underscore??
+const CIRTH_PUNCT_MID_DOT = 'P49';
+const CIRTH_PUNCT_DOT = 'P5C';
+const CIRTH_PUNCT_TWO_DOTS = 'P4F';
+const CIRTH_PUNCT_THREE_DOTS = 'P50';
+const CIRTH_PUNCT_THREE_DOTS_L = 'P50';
+const CIRTH_PUNCT_FOUR_DOTS = 'P7D';
+const CIRTH_PUNCT_EQUAL = 'P=';
 
 const cirthLayout = {
     cirthRows: [
@@ -248,6 +255,11 @@ const cirthLayout = {
         {rowLabel: '14', cirth: ['U55', 'U54', 'U52', 'U53']},
         {rowLabel: '15', cirth: [58, 57]},
         {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6]},
+    ],
+    punctuationRows: [
+        {rowLabel: '8.44', cirth: [CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS]},
+        {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L, CIRTH_PUNCT_EQUAL]},
+        {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS]},
     ],
     rowOffsets: {
         1: {leftchar: -3.5},
