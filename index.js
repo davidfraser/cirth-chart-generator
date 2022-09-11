@@ -104,6 +104,7 @@ const cirthData = {
         U5C: {fontchar: 'õ'}, //
         U5D: {fontchar: 'è'},
         U5D_alt: {fontchar: 'ç'},
+        U5F: {fontchar: 'ô'},
         U60: {fontchar: 'ö'},
         U61: {fontchar: 'ø'},
         U62: {fontchar: 'ù'},
