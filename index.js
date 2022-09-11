@@ -236,52 +236,31 @@ const CIRTH_PUNCT_EQUAL = 'P=';
 
 const cirthLayout = {
     cirthRows: [
-        {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1']},
-        {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, 38, '38_alt', 'U4F']},
-        {rowLabel: '3', cirth: [53, SPACE, 54, '52_alt', 'E7', 'E6', 'E4', 'U50', 'E5']},
-        {rowLabel: '4', cirth: ['U5B', 'U59', 22, 33, 17, 52, 'U5A', SPACE, 'U53', 48, 49]},
-        {rowLabel: '5', cirth: [PUNCT_STAR, PUNCT_CROSS, 36, 37]},
-        {rowLabel: '6', cirth: [31, '56_alt', 56, 'E3', 39, 59, 55, '55_alt', 32, DOUBLE_PIPE, 46, 47]},
-        {rowLabel: '7', cirth: ['U46', 27, 12, 'U4B', 'U4C', SPACE, HALF_SPACE, SPACE, SPACE, 'E2']},
-        {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41]},
-        {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D']},
-        {rowLabel: '10', cirth: [26, 11, 10, 8, 9, 24]},
-        {rowLabel: '10.5', cirth: ['U62', 'U61', 'U63', 43]},
-        {rowLabel: '11', cirth: [21, 20, 18, 19]},
-        {rowLabel: '11.5', cirth: [44, 42, 'U2D', 45]},
-        {rowLabel: '12', cirth: [34, 29, 30, 35]},
-        {rowLabel: '12.5', cirth: [5, SPACE, 'U2E', '45_alt']},
-        {rowLabel: '13', cirth: [16, 15, 13, 14]},
-        {rowLabel: '14', cirth: ['U55', 'U54', 'U52', 'U53']},
-        {rowLabel: '15', cirth: [58, 57]},
-        {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6]},
+        {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1'], leftchar: -3.5},
+        {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, 38, '38_alt', 'U4F'], leftchar: -3.5},
+        {rowLabel: '3', cirth: [53, SPACE, 54, '52_alt', 'E7', 'E6', 'E4', 'U50', 'E5'], leftchar: -1.5},
+        {rowLabel: '4', cirth: ['U5B', 'U59', 22, 33, 17, 52, 'U5A', SPACE, 'U53', 48, 49], leftchar: -3.5},
+        {rowLabel: '5', cirth: [PUNCT_STAR, PUNCT_CROSS, 36, 37], leftchar: -2.5},
+        {rowLabel: '6', cirth: [31, '56_alt', 56, 'E3', 39, 59, 55, '55_alt', 32, DOUBLE_PIPE, 46, 47], leftchar: -4.5},
+        {rowLabel: '7', cirth: ['U46', 27, 12, 'U4B', 'U4C', SPACE, HALF_SPACE, SPACE, SPACE, 'E2'], leftchar: -3},
+        {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41], leftchar: -3},
+        {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D'], leftchar: -2},
+        {rowLabel: '10', cirth: [26, 11, 10, 8, 9, 24], leftchar: -3},
+        {rowLabel: '10.5', cirth: ['U62', 'U61', 'U63', 43], leftchar: 3.5},
+        {rowLabel: '11', cirth: [21, 20, 18, 19], leftchar: -2},
+        {rowLabel: '11.5', cirth: [44, 42, 'U2D', 45], leftchar: 3.5},
+        {rowLabel: '12', cirth: [34, 29, 30, 35], leftchar: -2},
+        {rowLabel: '12.5', cirth: [5, SPACE, 'U2E', '45_alt'], leftchar: 3.5},
+        {rowLabel: '13', cirth: [16, 15, 13, 14], leftchar: -2},
+        {rowLabel: '14', cirth: ['U55', 'U54', 'U52', 'U53'], leftchar: -2},
+        {rowLabel: '15', cirth: [58, 57], leftchar: -1},
+        {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6], leftchar: -4},
     ],
     punctuationRows: [
-        {rowLabel: '8.44', cirth: [CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS]},
-        {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L, CIRTH_PUNCT_EQUAL]},
-        {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS]},
+        {rowLabel: '8.44', cirth: [CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 10},
+        {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L, CIRTH_PUNCT_EQUAL], leftchar: 10},
+        {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 10},
     ],
-    rowOffsets: {
-        1: {leftchar: -3.5},
-        2: {leftchar: -3.5},
-        3: {leftchar: -1.5},
-        4: {leftchar: -3.5},
-        5: {leftchar: -2.5},
-        6: {leftchar: -4.5},
-        7: {leftchar: -3},
-        8: {leftchar: -3},
-        9: {leftchar: -2},
-        10: {leftchar: -3},
-        10.5: {leftchar: 3.5},
-        11: {leftchar: -2},
-        11.5: {leftchar: 3.5},
-        12: {leftchar: -2},
-        12.5: {leftchar: 3.5},
-        13: {leftchar: -2},
-        14: {leftchar: -2},
-        15: {leftchar: -1},
-        16: {leftchar: -4},
-    },
 }
 
 // TODO: automate the punctuation block template generation
@@ -339,7 +318,7 @@ function expandedLayout(layout, charLookup, orthLookup) {
     var punctuationLayout = [];
     for (var cirthRow of layout['cirthRows']) {
         const rowLabel = cirthRow['rowLabel'];
-        const rowOffset = layout['rowOffsets'][rowLabel];
+        const rowOffset = cirthRow.leftchar;
         var yOffset = parseFloat(rowLabel)*18.4154-91.20655;
         var expandedRow = {'rowLabel': rowLabel, 'offset': {x: 0, y: yOffset}};
         var expandedChars = [];
@@ -353,7 +332,7 @@ function expandedLayout(layout, charLookup, orthLookup) {
                 continue;
             }
             var charInfo = compileCirthInfo(cirthNumber, charLookup, orthLookup);
-            var charOffset = (index + indexOffset + rowOffset['leftchar'])*16.68 + 11.625;
+            var charOffset = (index + indexOffset + rowOffset)*16.68 + 11.625;
             charInfo['offset'] = {x: charOffset, y: 0};
             expandedChars.push(charInfo);
         }
