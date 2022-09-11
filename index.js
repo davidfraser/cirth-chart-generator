@@ -299,6 +299,12 @@ function expandedLayout(layout, charLookup, orthLookup) {
                 cirthLabel = cirthLabel.replace('U', 'Uxx');
                 cirthStyle = 'cirthUnicode';
                 cirthDisplayNumber = cirthDisplayNumber.replace('U', '').toLowerCase();
+                var cirthUnicodeDecimal = parseInt(cirthDisplayNumber, 16);
+                var charUnicode = charLookup[cirthNumber].fontchar;
+                var charCodePoint = charUnicode.length > 0 ? charUnicode.codePointAt(0) : 0;
+                console.log(`Unicode ${cirthLabel} ${cirthUnicodeDecimal} ${charUnicode} ${charCodePoint} ux ${charCodePoint.toString(16)}`)
+                // Note: These U numbers are generally intended to be the last two hex digits of the Unicode codepoint proposed in ISO10646
+                // They cannot be used to type in the Cirth Erebor font
             } else if (cirthLabel.startsWith('E')) {
                 cirthLabel = cirthLabel.replace('E', 'Erebor');
                 cirthStyle = 'cirthErebor';
