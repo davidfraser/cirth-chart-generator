@@ -272,6 +272,49 @@ const cirthLayout = {
     },
 }
 
+function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
+    var cirthId = typeof cirthNumber == 'number' ? cirthNumber.toString() : cirthNumber;
+    var cirthLabel = cirthId;
+    var cirthDisplayNumber = cirthId;
+    var cirthStyle = 'cirthRegular';
+    if (cirthLabel.startsWith('U')) {
+        cirthLabel = cirthLabel.replace('U', 'Uxx');
+        cirthStyle = 'cirthUnicode';
+        cirthDisplayNumber = cirthDisplayNumber.replace('U', '').toLowerCase();
+        var cirthUnicodeDecimal = parseInt(cirthDisplayNumber, 16);
+        var charUnicode = charLookup[cirthNumber].keystroke;
+        var charCodePoint = charUnicode.length > 0 ? charUnicode.codePointAt(0) : 0;
+        console.log(`Unicode ${cirthLabel} ${cirthUnicodeDecimal} ${charUnicode} ${charCodePoint} ux ${charCodePoint.toString(16)}`);
+        // Note: These U numbers are generally intended to be the last two hex digits of the Unicode codepoint proposed in ISO10646
+        // They cannot be used to type in the Cirth Erebor font
+    } else if (cirthLabel.startsWith('E')) {
+        cirthLabel = cirthLabel.replace('E', 'Erebor');
+        cirthStyle = 'cirthErebor';
+        cirthDisplayNumber = cirthDisplayNumber.toLowerCase();
+    } else if (cirthLabel.startsWith('#')) {
+        cirthLabel = cirthLabel.replace('#', 'Numeral');
+        cirthStyle = 'cirthErebor';
+        cirthDisplayNumber = cirthDisplayNumber.toLowerCase();
+    }
+    if (cirthDisplayNumber.endsWith('_alt')) {
+        cirthDisplayNumber = cirthDisplayNumber.replace('_alt', '*');
+    }
+    var charInfo = Object.assign({}, charLookup[cirthNumber]);
+    if (charInfo['isWord'] == true) {
+        cirthStyle += ' cirthWord';
+    }
+    charInfo['cirthNumber'] = cirthDisplayNumber;
+    charInfo['cirthId'] = cirthId;
+    charInfo['cirthLabel'] = cirthLabel;
+    charInfo['cirthStyle'] = cirthStyle;
+    var orthInfo = orthLookup[cirthId.replace('_alt', '')];
+    if (orthInfo === undefined) { console.error(`Couldn't find orthography for ${cirthNumber}`); }
+    if (orthInfo.orthography == '')
+        orthInfo.orthography = '-';
+    charInfo = Object.assign(charInfo, orthInfo);
+    return charInfo;
+}
+
 function expandedLayout(layout, charLookup, orthLookup) {
     // this includes the relevant character information into the layout
     var cirthLayout = [];
@@ -291,44 +334,7 @@ function expandedLayout(layout, charLookup, orthLookup) {
             if (cirthNumber == FULL_SPACE) {
                 continue;
             }
-            var cirthId = typeof cirthNumber == 'number' ? cirthNumber.toString() : cirthNumber;
-            var cirthLabel = cirthId;
-            var cirthDisplayNumber = cirthId;
-            var cirthStyle = 'cirthRegular';
-            if (cirthLabel.startsWith('U')) {
-                cirthLabel = cirthLabel.replace('U', 'Uxx');
-                cirthStyle = 'cirthUnicode';
-                cirthDisplayNumber = cirthDisplayNumber.replace('U', '').toLowerCase();
-                var cirthUnicodeDecimal = parseInt(cirthDisplayNumber, 16);
-                var charUnicode = charLookup[cirthNumber].keystroke;
-                var charCodePoint = charUnicode.length > 0 ? charUnicode.codePointAt(0) : 0;
-                console.log(`Unicode ${cirthLabel} ${cirthUnicodeDecimal} ${charUnicode} ${charCodePoint} ux ${charCodePoint.toString(16)}`)
-                // Note: These U numbers are generally intended to be the last two hex digits of the Unicode codepoint proposed in ISO10646
-                // They cannot be used to type in the Cirth Erebor font
-            } else if (cirthLabel.startsWith('E')) {
-                cirthLabel = cirthLabel.replace('E', 'Erebor');
-                cirthStyle = 'cirthErebor';
-                cirthDisplayNumber = cirthDisplayNumber.toLowerCase();
-            } else if (cirthLabel.startsWith('#')) {
-                cirthLabel = cirthLabel.replace('#', 'Numeral');
-                cirthStyle = 'cirthErebor';
-                cirthDisplayNumber = cirthDisplayNumber.toLowerCase();
-            }
-            if (cirthDisplayNumber.endsWith('_alt')) {
-                cirthDisplayNumber = cirthDisplayNumber.replace('_alt', '*');
-            }
-            var charInfo = Object.assign({}, charLookup[cirthNumber]);
-            if (charInfo['isWord'] == true) {
-                cirthStyle += ' cirthWord';
-            }
-            charInfo['cirthNumber']  = cirthDisplayNumber;
-            charInfo['cirthId'] = cirthId;
-            charInfo['cirthLabel'] = cirthLabel;
-            charInfo['cirthStyle'] = cirthStyle;
-            var orthInfo = orthLookup[cirthId.replace('_alt', '')];
-            if (orthInfo === undefined) { console.error(`Couldn't find orthography for ${cirthNumber}`)}
-            if (orthInfo.orthography == '') orthInfo.orthography = '-';
-            charInfo = Object.assign(charInfo, orthInfo);
+            var charInfo = compileCirthInfo(cirthNumber, charLookup, orthLookup);
             var charOffset = (index + indexOffset + rowOffset['leftchar'])*16.68 + 11.625;
             charInfo['offset'] = {x: charOffset, y: 0};
             expandedChars.push(charInfo);
