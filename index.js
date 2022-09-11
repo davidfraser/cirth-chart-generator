@@ -52,6 +52,7 @@ const cirthData = {
         43: {keystroke: 'D'},
         44: {keystroke: 'F'},
         45: {keystroke: 'G'},
+        '45_alt': {keystroke: 'L'},
         46: {keystroke: 'z'},
         47: {keystroke: 'x'},
         48: {keystroke: 'c'},
