@@ -342,8 +342,8 @@ function expandedLayout(layout, charLookup, orthLookup) {
     for (var cirthRow of layout['cirthRows']) {
         const rowLabel = cirthRow['rowLabel'];
         const rowOffset = cirthRow.leftchar;
-        var yOffset = parseFloat(rowLabel)*18.4154-91.20655;
-        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: 0, y: yOffset}};
+        var yOffset = parseFloat(rowLabel)*18.4154-91.20655+74.632111;
+        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: 69.792236, y: yOffset}};
         var expandedChars = [];
         let indexOffset = 0;
         for (let [index, cirthNumber] of cirthRow['cirth'].entries()) {
