@@ -79,6 +79,9 @@
       stroke-dasharray: none;
       stop-color: #000000
     }
+    g.cirthUnicode rect.keystroke {
+      stroke-width: 0.266067;
+    }
     rect.symbol {
       fill: #dedede;
       stroke: #ffffff;
@@ -585,8 +588,8 @@
          inkscape:label="gCirth{{gCirthLabel}}"
          transform="translate({{offset.x}},{{offset.y}})">
         <rect
-           class="cirth"
            id="rectCirth{{cirthId}}"
+           class="cirth"
            {{#widechar}}
            width="11.629047"
            height="9.1290474"
@@ -600,21 +603,19 @@
            inkscape:label="rectCirth{{cirthLabel}}" />
         <text
            xml:space="preserve"
-           style="font-size:8.46667px;line-height:1.25;font-family:'Cirth Erebor';-inkscape-font-specification:'Cirth Erebor';stroke-width:0.264583"
+           class="symbol"
            {{#widechar}}
-           x="0.5"
+           x="3.8"
            {{/widechar}}
            {{^widechar}}
-           x="1.5"
+           x="2.6"
            {{/widechar}}
            y="8.8"
            id="textCirthCharacter{{cirthId}}"
-           inkscape:label="textCirthCharacter{{cirthId}}"><tspan
-             id="tspanCirthCharacter{{cirthId}}"
-             style="font-size:8.46667px">{{keystroke}}</tspan></text>
+           inkscape:label="textCirthCharacter{{cirthId}}"><tspan id="tspanCirthCharacter{{cirthId}}">{{keystroke}}</tspan></text>
         <rect
-           style="fill:#ffffff;stroke:#000000;stroke-width:0.266067;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
            id="rectFontCharacter{{cirthId}}"
+           class="keystroke"
            width="3.2671371"
            height="3.9672663"
            {{#widechar}}
@@ -629,19 +630,18 @@
            inkscape:label="rectFontCharacter" />
         <text
            xml:space="preserve"
-           style="font-size:2.82222px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
+           class="keystroke"
            {{#widechar}}
-           x="9.234"
+           x="9.334"
            {{/widechar}}
            {{^widechar}}
            x="6.814"
            {{/widechar}}
            y="3.508"
-           id="text117214-1-93-9"
+           id="textFontCharacter{{cirthId}}"
            inkscape:label="textFontCharacter"><tspan
              sodipodi:role="line"
-             id="tspan117212-2-63-0"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';text-align:center;text-anchor:middle;stroke-width:100;stroke-miterlimit:4;stroke-dasharray:none"
+             id="tspanFontCharacter{{cirthId}}"
              x="8.934"
              y="3.678">{{keystroke}}</tspan></text>
       </g>

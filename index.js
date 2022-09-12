@@ -311,7 +311,7 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
         cirthDisplayNumber = cirthDisplayNumber.toLowerCase();
     } else if (cirthLabel.startsWith('P')) {
         cirthLabel = cirthLabel.replace('P', 'Punct');
-        cirthStyle = 'cirthUnicode';
+        cirthStyle = 'cirthPunctuation';
         cirthDisplayNumber = '?'; // cirthDisplayNumber.replace('P', '').toLowerCase();
     }
     if (cirthDisplayNumber.endsWith('_alt')) {
