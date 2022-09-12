@@ -378,8 +378,8 @@ function expandedLayout(layout, charLookup, orthLookup) {
                 continue;
             }
             var charInfo = compileCirthInfo(cirthNumber, charLookup, false);
-            var charOffset = (index + indexOffset + rowOffset)*10.709 - 3;
-            charInfo['offset'] = {x: charOffset, y: 0};
+            var charOffset = (index + indexOffset + rowOffset)*10.709 - 3 + 69.792236;
+            charInfo['offset'] = {x: charOffset, y: 74.632111};
             charInfo['widechar'] = (cirthNumber == CIRTH_PUNCT_EQUAL);
             expandedChars.push(charInfo);
         }
