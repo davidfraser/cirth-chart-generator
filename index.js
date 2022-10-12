@@ -50,8 +50,8 @@ const cirthData = {
         26: {keystroke: 'Q'},
         27: {keystroke: 'W'},
         28: {keystroke: 'E'},
-        29: {keystroke: 'R'}, // This was T in the original chart, but that's wrong
-        30: {keystroke: 'T'}, // This was R in the original chart, but that's wrong
+        29: {keystroke: 'R'}, // R / right-facing "K" shape was numbered as 30 in the original chart, but that's wrong
+        30: {keystroke: 'T'}, // T / left-facing "K" shape was numbered as 29 in the original chart, but that's wrong
         31: {keystroke: 'a'},
         32: {keystroke: 's'},
         33: {keystroke: 'd'},
@@ -267,7 +267,7 @@ const cirthLayout = {
         {rowLabel: '10.5', cirth: ['U62', 'U61', 'U63', 43], leftchar: 3.5},
         {rowLabel: '11', cirth: [21, 20, 18, 19], leftchar: -2},
         {rowLabel: '11.5', cirth: [44, 42, 'U2D', 45], leftchar: 3.5},
-        {rowLabel: '12', cirth: [34, 29, 30, 35], leftchar: -2},
+        {rowLabel: '12', cirth: [34, 30, 29, 35], leftchar: -2},
         {rowLabel: '12.5', cirth: [5, SPACE, 'U2E', '45_alt'], leftchar: 3.5},
         {rowLabel: '13', cirth: [16, 15, 13, 14], leftchar: -2},
         {rowLabel: '14', cirth: ['U45', 'U44', 'U42', 'U43'], leftchar: -2},
