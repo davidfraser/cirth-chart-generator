@@ -79,8 +79,8 @@
       stroke-dasharray: none;
       stop-color: #000000
     }
-    g.cirthUnicode rect.keystroke {
-      stroke-width: 0.266067;
+    g.altnumpad rect.keystroke {
+      stroke: #000080;
     }
     rect.symbol {
       fill: #dedede;
@@ -146,6 +146,9 @@
       stroke-width: 100;
       stroke-miterlimit: 4;
       stroke-dasharray: none
+    }
+    g.altnumpad text.keystroke tspan {
+      fill: #000080;
     }
     text.symbol {
       font-size: 8.46667px;
@@ -233,9 +236,15 @@
         <rect
            class="keystroke"
            id="rectFontCharacter{{cirthId}}"
+           {{#widekeys}}
+           width="3.8"
+           x="9.10"
+           {{/widekeys}}
+           {{^widekeys}}
            width="3.2671371"
-           height="3.9672663"
            x="9.265"
+           {{/widekeys}}
+           height="3.9672663"
            y="0.884"
            rx="0.79082197"
            ry="0.73480803"
@@ -277,7 +286,7 @@
            y="9.507"
            id="textCirthCharacter{{cirthId}}"
            inkscape:label="textCirthCharacter{{cirthLabel}}"><tspan
-             id="tspanCirthCharacter{{cirthId}}">{{keystroke}}</tspan></text>
+             id="tspanCirthCharacter{{cirthId}}">{{fontCharacter}}</tspan></text>
         <text
            xml:space="preserve"
            class="orthography"
@@ -390,14 +399,26 @@
          xml:space="preserve"
          style="font-size:2.46944px;line-height:1.25;font-family:'Footlight MT Light';-inkscape-font-specification:'Footlight MT Light, ';stroke-width:0.264583"
          x="159.23569"
-         y="264.66574"
+         y="261.90000"
          id="text1419189"
          inkscape:label="textKeyFontCharacter"><tspan
            sodipodi:role="line"
            id="tspan1419187"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:Merriweather;-inkscape-font-specification:Merriweather;stroke-width:0.264583"
            x="159.23569"
-           y="264.66574">key for typing with font</tspan></text>
+           y="261.90000"><tspan style="font-family: 'Roboto Mono';font-style:italic">X</tspan>: type this to enter character</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:2.46944px;line-height:1.25;font-family:'Footlight MT Light';-inkscape-font-specification:'Footlight MT Light, ';stroke-width:0.264583"
+         x="159.23569"
+         y="264.66574"
+         id="text1419189"
+         inkscape:label="textKeyFontAltNumPad"><tspan
+           sodipodi:role="line"
+           id="tspan1419187"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:Merriweather;-inkscape-font-specification:Merriweather;stroke-width:0.264583;fill:#000080"
+           x="159.23569"
+           y="264.66574"><tspan style="font-family: 'Roboto Mono';font-style:italic">xx</tspan>: type after Alt-NumPad +</tspan></text>
       <g
          id="g1448846"
          transform="translate(-2.1166667,1.3020957)"
@@ -612,7 +633,7 @@
            {{/widechar}}
            y="8.8"
            id="textCirthCharacter{{cirthId}}"
-           inkscape:label="textCirthCharacter{{cirthId}}"><tspan id="tspanCirthCharacter{{cirthId}}">{{keystroke}}</tspan></text>
+           inkscape:label="textCirthCharacter{{cirthId}}"><tspan id="tspanCirthCharacter{{cirthId}}">{{fontCharacter}}</tspan></text>
         <rect
            id="rectFontCharacter{{cirthId}}"
            class="keystroke"

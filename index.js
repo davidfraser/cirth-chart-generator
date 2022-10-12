@@ -400,7 +400,6 @@ const cirthLayout = {
     ],
 }
 
-// TODO: change the keystrokes for these U items to be the hex sequence you can enter them with for the Erebor font with Alt-NumPad+
 // TODO: correct the names of these U items to be consistent
 // TODO: change the numbers that are displayed for these U times to be consistent
 
@@ -439,6 +438,15 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
     charInfo['cirthNumber'] = cirthDisplayNumber;
     charInfo['cirthId'] = cirthId;
     charInfo['cirthLabel'] = cirthLabel;
+    var keystroke = charInfo.keystroke;
+    charInfo['fontCharacter'] = keystroke;
+    var fontCodePoint = keystroke.codePointAt(0);
+    if (fontCodePoint > 128) {
+        keystroke = fontCodePoint.toString(16);
+        charInfo['widekeys'] = true;
+        cirthStyle += ' altnumpad';
+    }
+    charInfo['keystroke'] = keystroke;
     if (orthLookup !== false) {
         var orthInfo = orthLookup[cirthId.replace('_alt', '')];
         if (orthInfo === undefined) { console.error(`Couldn't find orthography for ${cirthNumber}`); }
