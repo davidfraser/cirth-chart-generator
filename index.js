@@ -441,53 +441,107 @@ const cirthData = {
     },
 }
 
-const cirthLayout = {
-    tileMetrics: {
-        cirthOffset: {x: 81.417236, y: -16.574439},
-        cirthSpacing: {x: 16.68, y: 18.4154},
-        cirthPunctOffset: {x: 66.792236, y: 0},
-        cirthPunctSpacing: {x: 10.709, y: 18.4154},
+const cirthLayouts = {
+    portrait: {
+        name: 'portrait',
+        orientation: 'portrait',
+        tileMetrics: {
+            cirthOffset: {x: 81.417236, y: -16.574439},
+            cirthSpacing: {x: 16.68, y: 18.4154},
+            cirthPunctOffset: {x: 66.792236, y: 0},
+            cirthPunctSpacing: {x: 10.709, y: 18.4154},
+        },
+        textPositions: {
+            cirthLegend: {x: 157.95149, y: 276.338212},
+            legendLText: {x: 156.92776, y: 278.83761},
+            legendRText: {x: 172.47233, y: 276.77080},
+            descriptionText: {x: 118.24999, y: 236.91302},
+            punctuationTitle: {x: 180.27777, y: 136.91945},
+            chartTitle: {x: -270.40067, y: 23.093559, transform: 'rotate(-90)'},
+        },
+        textSizes: {
+            descriptionText: {fontSize: 3.7, lineHeight: 1.25},
+            legendText: {fontSize: 2.46944, lineHeight: 1.25},
+            punctuationTitle: {fontSize: 4.23333},
+            chartTitle: {fontSize: 19.7556},
+        },
+        cirthRows: [
+            {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1'], leftchar: -3.5},
+            {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, '38_alt', 38, 'U4F'], leftchar: -3.5},
+            {rowLabel: '3', cirth: [53, SPACE, 54, '52_alt', 'E7', 'E6', 'E4', 'U50', 'E5'], leftchar: -1.5},
+            {rowLabel: '4', cirth: ['U5B', 'U59', 22, 33, 17, 52, 'U5A', SPACE, 'U53', 48, 49], leftchar: -3.5},
+            {rowLabel: '5', cirth: [PUNCT_STAR, PUNCT_CROSS, 36, 37], leftchar: -2.5},
+            {rowLabel: '6', cirth: [31, '56_alt', 56, 'E3', 39, 59, 55, '55_alt', 32, DOUBLE_PIPE, 46, 47], leftchar: -4.5},
+            {rowLabel: '7', cirth: ['U46', 27, 12, 'U4B', 'U4C', SPACE, HALF_SPACE, SPACE, SPACE, 'E2'], leftchar: -3},
+            {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41], leftchar: -3},
+            {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D'], leftchar: -2},
+            {rowLabel: '10', cirth: [26, 11, 10, 8, 9, 24], leftchar: -3},
+            {rowLabel: '10.5', cirth: ['U62', 'U61', 'U63', 43], leftchar: 3.5},
+            {rowLabel: '11', cirth: [21, 20, 18, 19], leftchar: -2},
+            {rowLabel: '11.5', cirth: [44, 42, 'U2D', 45], leftchar: 3.5},
+            {rowLabel: '12', cirth: [34, 30, 29, 35], leftchar: -2},
+            {rowLabel: '12.5', cirth: [5, SPACE, 'U2E', '45_alt'], leftchar: 3.5},
+            {rowLabel: '13', cirth: [16, 15, 13, 14], leftchar: -2},
+            {rowLabel: '14', cirth: ['U45', 'U44', 'U42', 'U43'], leftchar: -2},
+            {rowLabel: '15', cirth: [58, 57], leftchar: -1},
+            {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6], leftchar: -4},
+        ],
+        punctuationRows: [
+            {rowLabel: '8.44', cirth: [CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 10},
+            {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L, CIRTH_PUNCT_EQUAL], leftchar: 10},
+            {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 10},
+        ],
     },
-    textPositions: {
-        cirthLegend: {x: 157.95149, y: 276.338212},
-        legendLText: {x: 156.92776, y: 278.83761},
-        legendRText: {x: 172.47233, y: 276.77080},
-        descriptionText: {x: 118.24999, y: 236.91302},
-        punctuationTitle: {x: 180.27777, y: 136.91945},
-        chartTitle: {x: -270.40067, y: 23.093559},
+    landscape: {
+        name: 'landscape',
+        // note some metrics are interpreted inverted in landscape mode
+        tileMetrics: {
+            cirthOffset: {x: 80, y: -16.574439},
+            cirthSpacing: {x: 17.8, y: 17.1},
+            cirthPunctOffset: {x: 82, y: 0},
+            cirthPunctSpacing: {x: 9.9, y: 18.9},
+        },
+        textPositions: {
+            cirthLegend: {x: 239.05549, y: 185.79812},
+            legendLText: {x: 238.03176, y: 188.29761},
+            legendRText: {x: 253.50633, y: 186.23080},
+            descriptionText: {x: 214, y: 143.25836},
+            punctuationTitle: {x: -204.04176, y: 125, transform: 'rotate(-90)'},
+            chartTitle: {x: 105.05647, y: 19.49925},
+        },
+        textSizes: {
+            descriptionText: {fontSize: 3.7, lineHeight: 1.25},
+            legendText: {fontSize: 2.46944, lineHeight: 1.25},
+            punctuationTitle: {fontSize: 4.23333},
+            chartTitle: {fontSize: 19.7556},
+        },
+        cirthRows: [
+            {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1'], leftchar: -3.5},
+            {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, '38_alt', 38, 'U4F'], leftchar: -3.5},
+            {rowLabel: '3', cirth: [53, SPACE, 54, '52_alt', 'E7', 'E6', 'E4', 'U50', 'E5'], leftchar: -1.5},
+            {rowLabel: '4', cirth: ['U5B', 'U59', 22, 33, 17, 52, 'U5A', SPACE, 'U53', 48, 49], leftchar: -3.5},
+            {rowLabel: '5', cirth: [PUNCT_STAR, PUNCT_CROSS, 36, 37], leftchar: -2.5},
+            {rowLabel: '6', cirth: [31, '56_alt', 56, 'E3', 39, 59, 55, '55_alt', 32, DOUBLE_PIPE, 46, 47], leftchar: -4.5},
+            {rowLabel: '7', cirth: ['U46', 27, 12, 'U4B', 'U4C', SPACE, HALF_SPACE, SPACE, SPACE, 'E2'], leftchar: -3},
+            {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41], leftchar: -3},
+            {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D'], leftchar: -2},
+            {rowLabel: '10', cirth: [26, 11, 10, 8, 9, 24], leftchar: -3},
+            {rowLabel: '10.5', cirth: ['U62', 'U61', 'U63', 43], leftchar: 3.5},
+            {rowLabel: '11', cirth: [21, 20, 18, 19], leftchar: -2},
+            {rowLabel: '11.5', cirth: [44, 42, 'U2D', 45], leftchar: 3.5},
+            {rowLabel: '12', cirth: [34, 30, 29, 35], leftchar: -2},
+            {rowLabel: '12.5', cirth: [5, SPACE, 'U2E', '45_alt'], leftchar: 3.5},
+            {rowLabel: '13', cirth: [16, 15, 13, 14], leftchar: -2},
+            {rowLabel: '14', cirth: ['U45', 'U44', 'U42', 'U43'], leftchar: -2},
+            {rowLabel: '15', cirth: [58, 57], leftchar: -1},
+            {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6], leftchar: -4},
+        ],
+        punctuationRows: [
+            {rowLabel: '8.44', cirth: [CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 10},
+            {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L, CIRTH_PUNCT_EQUAL], leftchar: 10},
+            {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 10},
+        ],
     },
-    textSizes: {
-        descriptionText: {fontSize: 3.7, lineHeight: 1.25},
-        legendText: {fontSize: 2.46944, lineHeight: 1.25},
-        punctuationTitle: {fontSize: 4.23333},
-        chartTitle: {fontSize: 19.7556},
-    },
-    cirthRows: [
-        {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1'], leftchar: -3.5},
-        {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, '38_alt', 38, 'U4F'], leftchar: -3.5},
-        {rowLabel: '3', cirth: [53, SPACE, 54, '52_alt', 'E7', 'E6', 'E4', 'U50', 'E5'], leftchar: -1.5},
-        {rowLabel: '4', cirth: ['U5B', 'U59', 22, 33, 17, 52, 'U5A', SPACE, 'U53', 48, 49], leftchar: -3.5},
-        {rowLabel: '5', cirth: [PUNCT_STAR, PUNCT_CROSS, 36, 37], leftchar: -2.5},
-        {rowLabel: '6', cirth: [31, '56_alt', 56, 'E3', 39, 59, 55, '55_alt', 32, DOUBLE_PIPE, 46, 47], leftchar: -4.5},
-        {rowLabel: '7', cirth: ['U46', 27, 12, 'U4B', 'U4C', SPACE, HALF_SPACE, SPACE, SPACE, 'E2'], leftchar: -3},
-        {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41], leftchar: -3},
-        {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D'], leftchar: -2},
-        {rowLabel: '10', cirth: [26, 11, 10, 8, 9, 24], leftchar: -3},
-        {rowLabel: '10.5', cirth: ['U62', 'U61', 'U63', 43], leftchar: 3.5},
-        {rowLabel: '11', cirth: [21, 20, 18, 19], leftchar: -2},
-        {rowLabel: '11.5', cirth: [44, 42, 'U2D', 45], leftchar: 3.5},
-        {rowLabel: '12', cirth: [34, 30, 29, 35], leftchar: -2},
-        {rowLabel: '12.5', cirth: [5, SPACE, 'U2E', '45_alt'], leftchar: 3.5},
-        {rowLabel: '13', cirth: [16, 15, 13, 14], leftchar: -2},
-        {rowLabel: '14', cirth: ['U45', 'U44', 'U42', 'U43'], leftchar: -2},
-        {rowLabel: '15', cirth: [58, 57], leftchar: -1},
-        {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6], leftchar: -4},
-    ],
-    punctuationRows: [
-        {rowLabel: '8.44', cirth: [CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 10},
-        {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L, CIRTH_PUNCT_EQUAL], leftchar: 10},
-        {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 10},
-    ],
 }
 
 function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
@@ -547,13 +601,20 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
 
 function expandedLayout(layout, charLookup, orthLookup) {
     // this includes the relevant character information into the layout
+    const orientation = layout.orientation;
     var cirthLayout = [];
     var punctuationLayout = [];
     for (var cirthRow of layout['cirthRows']) {
         const rowLabel = cirthRow['rowLabel'];
         const rowOffset = cirthRow.leftchar;
         var yOffset = parseFloat(rowLabel)*layout.tileMetrics.cirthSpacing.y + layout.tileMetrics.cirthOffset.y;
-        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: layout.tileMetrics.cirthOffset.x, y: yOffset}};
+        let offset = {}
+        if (orientation == 'portrait') {
+            offset = {x: layout.tileMetrics.cirthOffset.x, y: yOffset};
+        } else {
+            offset = {y: layout.tileMetrics.cirthOffset.x, x: yOffset};
+        }
+        var expandedRow = {'rowLabel': rowLabel, 'offset': offset};
         var expandedChars = [];
         let indexOffset = 0;
         for (let [index, cirthNumber] of cirthRow['cirth'].entries()) {
@@ -566,7 +627,11 @@ function expandedLayout(layout, charLookup, orthLookup) {
             }
             var charInfo = compileCirthInfo(cirthNumber, charLookup, orthLookup);
             var charOffset = (index + indexOffset + rowOffset)*layout.tileMetrics.cirthSpacing.x;
-            charInfo['offset'] = {x: charOffset, y: 0};
+            if (orientation == 'portrait') {
+                charInfo['offset'] = {x: charOffset, y: 0};
+            } else {
+                charInfo['offset'] = {x: 0, y: charOffset};
+            }
             expandedChars.push(charInfo);
         }
         expandedRow['cirth'] = expandedChars;
@@ -576,7 +641,13 @@ function expandedLayout(layout, charLookup, orthLookup) {
         const rowLabel = cirthRow['rowLabel'];
         const rowOffset = cirthRow.leftchar;
         var yOffset = parseFloat(rowLabel)*layout.tileMetrics.cirthSpacing.y+layout.tileMetrics.cirthOffset.y;
-        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: layout.tileMetrics.cirthPunctOffset.x, y: yOffset}};
+        let offset = {}
+        if (orientation == 'portrait') {
+            offset = {x: layout.tileMetrics.cirthPunctOffset.x, y: yOffset};
+        } else {
+            offset = {y: layout.tileMetrics.cirthPunctOffset.x, x: yOffset}
+        }
+        var expandedRow = {'rowLabel': rowLabel, 'offset': offset};
         var expandedChars = [];
         let indexOffset = 0;
         for (let [index, cirthNumber] of cirthRow['cirth'].entries()) {
@@ -589,7 +660,11 @@ function expandedLayout(layout, charLookup, orthLookup) {
             }
             var charInfo = compileCirthInfo(cirthNumber, charLookup, false);
             var charOffset = (index + indexOffset + rowOffset)*layout.tileMetrics.cirthPunctSpacing.x;
-            charInfo['offset'] = {x: charOffset, y: 0};
+            if (orientation == 'portrait') {
+                charInfo['offset'] = {x: charOffset, y: 0};
+            } else {
+                charInfo['offset'] = {x: 0, y: charOffset};
+            }
             charInfo['widechar'] = (cirthNumber == CIRTH_PUNCT_EQUAL);
             expandedChars.push(charInfo);
         }
@@ -620,23 +695,30 @@ function expandedLayout(layout, charLookup, orthLookup) {
         if (textRow == 3) legendOffset += 3;
         layout.textPositions.legendLText['y'+textRow.toString()] = legendLY + legendFS*textRow + (legendLH-1)*legendOffset*3;
     }
-
+    let pagelayout = {};
+    if (layout.orientation == 'portrait') {
+        pageLayout = {width: '210', height: '297'}
+    } else {
+        pageLayout = {width: '297', height: '210'}
+    }
     return {'cirthRows': cirthLayout, 'punctuationRows': punctuationLayout,
-            'textSizes': layout.textSizes, 'textPositions': layout.textPositions};
+            'textSizes': layout.textSizes, 'textPositions': layout.textPositions, 'pageLayout': pageLayout};
 }
 
 try {
     for (const [modeId, cirthMode] of Object.entries(cirthModes)) {
-        if (cirthMode.name == undefined) continue;
-        const filename = `cirth-chart-${cirthMode.name}.svg`;
-        console.log(`Writing diagram for ${modeId} (${cirthMode.title}) into ${filename}`);
-        const calculatedOrthography = Object.assign({}, cirthModes.common.orthography, cirthMode.orthography);
-        cirthMode.orthography = calculatedOrthography;
-        const templateText = fs.readFileSync('cirth-chart.svg.mustache', {encoding: 'utf-8'});
-        const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography);
-        const templateData = Object.assign({}, cirthData, cirthMode, layout);
-        const cirthSvg = mustache.render(templateText, templateData);
-        fs.writeFileSync(filename, cirthSvg)
+        for (const [layoutId, cirthLayout] of Object.entries(cirthLayouts)) {
+            if (cirthMode.name == undefined) continue;
+            const filename = `cirth-chart-${cirthMode.name}-${layoutId}.svg`;
+            console.log(`Writing diagram for ${modeId} (${cirthMode.title}) into ${filename}`);
+            const calculatedOrthography = Object.assign({}, cirthModes.common.orthography, cirthMode.orthography);
+            cirthMode.orthography = calculatedOrthography;
+            const templateText = fs.readFileSync('cirth-chart.svg.mustache', {encoding: 'utf-8'});
+            const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography);
+            const templateData = Object.assign({}, cirthData, cirthMode, layout);
+            const cirthSvg = mustache.render(templateText, templateData);
+            fs.writeFileSync(filename, cirthSvg)
+        }
     }
 } catch(err) {
     console.error(err);
