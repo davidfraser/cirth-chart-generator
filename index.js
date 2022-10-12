@@ -418,7 +418,7 @@ const cirthData = {
 
 const cirthLayout = {
     textPositions: {
-        descriptionText: {x: 118.24999, y: 237.91302},
+        descriptionText: {x: 118.24999, y: 235.91302},
         punctuationTitle: {x: 180.27777, y: 136.91945},
         chartTitle: {x: -270.40067, y: 23.093559},
     },
