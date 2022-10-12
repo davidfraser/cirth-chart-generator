@@ -52,7 +52,7 @@ const cirthData = {
         28: {keystroke: 'E'},
         29: {keystroke: 'R'}, // This was T in the original chart, but that's wrong
         30: {keystroke: 'T'}, // This was R in the original chart, but that's wrong
-        31: {keystroke: 'k'},
+        31: {keystroke: 'a'},
         32: {keystroke: 's'},
         33: {keystroke: 'd'},
         34: {keystroke: 'f'},
@@ -318,20 +318,20 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
         cirthDisplayNumber = cirthDisplayNumber.replace('_alt', '*');
     }
     var charInfo = Object.assign({}, charLookup[cirthNumber]);
-    if (charInfo['isWord'] == true) {
-        cirthStyle += ' cirthWord';
-    }
     charInfo['cirthNumber'] = cirthDisplayNumber;
     charInfo['cirthId'] = cirthId;
     charInfo['cirthLabel'] = cirthLabel;
-    charInfo['cirthStyle'] = cirthStyle;
     if (orthLookup !== false) {
         var orthInfo = orthLookup[cirthId.replace('_alt', '')];
         if (orthInfo === undefined) { console.error(`Couldn't find orthography for ${cirthNumber}`); }
         if (orthInfo.orthography == '')
             orthInfo.orthography = '-';
+        if (orthInfo.isWord == true) {
+            cirthStyle += ' cirthWord';
+        }
         charInfo = Object.assign(charInfo, orthInfo);
     }
+    charInfo['cirthStyle'] = cirthStyle;
     return charInfo;
 }
 
