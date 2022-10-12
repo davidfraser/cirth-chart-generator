@@ -18,9 +18,7 @@ const CIRTH_PUNCT_FOUR_DOTS = 'P7D';    // 125 == character for } which is how y
 const CIRTH_PUNCT_EQUAL = 'P=';         // 61 / 0x3D would be the character for =
 
 const cirthModes = {
-    'erebor': {
-        title: 'Angerthas Erebor',
-        name: 'angerthas-erebor',
+    common: {
         orthography: {
             1: {orthography: 'p'},
             2: {orthography: 'b'},
@@ -28,31 +26,82 @@ const cirthModes = {
             4: {orthography: 'v'},
             5: {orthography: 'hw'},
             6: {orthography: 'm'},
-            7: {orthography: 'mb'},
             8: {orthography: 't'},
             9: {orthography: 'd'},
             10: {orthography: 'th'},
             11: {orthography: 'dh'},
-            12: {orthography: 'r'},
             13: {orthography: 'ch'},
-            14: {orthography: 'j'},
             15: {orthography: 'sh'},
-            16: {orthography: 'zh'},
-            17: {orthography: 'ks'},
             18: {orthography: 'k'},
             19: {orthography: 'g'},
             20: {orthography: 'kh'},
             21: {orthography: 'gh'},
-            22: {orthography: 'n'},
             23: {orthography: 'kw'},
             24: {orthography: 'gw'},
             25: {orthography: 'khw'},
             26: {orthography: 'ghw'},
             27: {orthography: 'ngw'},
             28: {orthography: 'nw'},
+            31: {orthography: 'l'},
+            42: {orthography: 'u'},
+            44: {orthography: 'w'},
+            45: {orthography: 'ü'},
+            46: {orthography: 'e'},
+            48: {orthography: 'a'},
+            50: {orthography: 'o'},
+            59: {orthography: '+h'},
+            60: {orthography: '&', isWord: true},
+        },
+    },
+    daeron: {
+        title: 'Angerthas Daeron',
+        name: 'angerthas-daeron',
+        language: 'Sindarin or Quenya',
+        orthography: {
+            7: {orthography: 'mh/mb'},
+            12: {orthography: 'n'},
+            14: {orthography: 'j'},
+            16: {orthography: 'zh'},
+            17: {orthography: 'nj'},
+            22: {orthography: 'n/5'},
+            29: {orthography: 'r'},
+            30: {orthography: 'rh'},
+            32: {orthography: 'lh'},
+            33: {orthography: 'ng'},
+            34: {orthography: 's'},
+            35: {orthography: 's'},
+            36: {orthography: 'ss/z'},
+            37: {orthography: ''},
+            38: {orthography: 'nd'},
+            39: {orthography: 'i/y'},
+            40: {orthography: ''},
+            41: {orthography: ''},
+            43: {orthography: 'ú'},
+            47: {orthography: 'é'},
+            49: {orthography: 'á'},
+            51: {orthography: 'ó'},
+            52: {orthography: 'ö'},
+            53: {orthography: ''},
+            54: {orthography: 'h'},
+            55: {orthography: ''},
+            56: {orthography: ''},
+            57: {orthography: ''},
+            58: {orthography: ''},
+        },
+    },
+    'erebor': {
+        title: 'Angerthas Erebor',
+        name: 'angerthas-erebor',
+        language: 'Khudzul or English',
+        orthography: {
+            7: {orthography: 'mb'},
+            12: {orthography: 'r'},
+            14: {orthography: 'j'},
+            16: {orthography: 'zh'},
+            17: {orthography: 'ks'},
+            22: {orthography: 'n'},
             29: {orthography: 'g'},
             30: {orthography: 'gh'},
-            31: {orthography: 'l'},
             32: {orthography: ''},
             33: {orthography: 'nd'},
             34: {orthography: 's'},
@@ -63,15 +112,9 @@ const cirthModes = {
             39: {orthography: 'i'},
             40: {orthography: 'y'},
             41: {orthography: 'hy'},
-            42: {orthography: 'u'},
             43: {orthography: 'z'},
-            44: {orthography: 'w'},
-            45: {orthography: 'ü'},
-            46: {orthography: 'e'},
             47: {orthography: 'ee'},
-            48: {orthography: 'a'},
             49: {orthography: 'aa'},
-            50: {orthography: 'o'},
             51: {orthography: 'oo'},
             52: {orthography: 'ö'},
             53: {orthography: 'n'},
@@ -80,8 +123,6 @@ const cirthModes = {
             56: {orthography: 'ʌ'}, // stressed schwa
             57: {orthography: 'ps'},
             58: {orthography: 'ts'},
-            59: {orthography: '+h'},
-            60: {orthography: '&', isWord: true},
             E1: {orthography: 'eu'},
             E2: {orthography: 'll'},
             E3: {orthography: 'the', isWord: true},
@@ -127,9 +168,10 @@ const cirthModes = {
             [DOUBLE_PIPE]: {orthography: ''},
             [PUNCT_STAR]: {orthography: '*'},
             [PUNCT_CROSS]: {orthography: ''},
-        }
-    }
+        },
+    },
 }
+
 const cirthData = {
     // This unicodeTable is for reference, and represents the proposed inclusion of Cirth in unicode (not yet standardised)
     // See https://www.evertype.com/standards/iso10646/pdf/cirth.pdf
@@ -451,7 +493,10 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
     charInfo['keystroke'] = keystroke;
     if (orthLookup !== false) {
         var orthInfo = orthLookup[cirthId.replace('_alt', '')];
-        if (orthInfo === undefined) { console.error(`Couldn't find orthography for ${cirthNumber}`); }
+        if (orthInfo === undefined) {
+            console.debug(`Couldn't find orthography for ${cirthNumber}`);
+            orthInfo = {'orthography': ''};
+        }
         if (orthInfo.orthography == '')
             orthInfo.orthography = '-';
         if (orthInfo.isWord == true) {
@@ -530,6 +575,8 @@ try {
         if (cirthMode.name == undefined) continue;
         const filename = `cirth-chart-${cirthMode.name}.svg`;
         console.log(`Writing diagram for ${modeId} (${cirthMode.title}) into ${filename}`);
+        const calculatedOrthography = Object.assign({}, cirthModes.common.orthography, cirthMode.orthography);
+        cirthMode.orthography = calculatedOrthography;
         const templateText = fs.readFileSync('cirth-chart.svg.mustache', {encoding: 'utf-8'});
         const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography);
         const templateData = Object.assign({}, cirthData, cirthMode, layout);
