@@ -1,7 +1,7 @@
 {
   "name": "cirth-chart-generator",
   "version": "1.0.0",
-  "description": "Generates an SVG image of a reference for Cirth characters",
+  "description": "Generates SVG imagse of references for Tolkien's Cirth characters",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
