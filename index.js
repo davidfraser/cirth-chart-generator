@@ -61,8 +61,8 @@ const cirthData = {
         0xE0A2: {name: "CIRTH LETTER KHUZDUL GLOTTAL STOP", cirthNumber: 35},
         0xE0A3: {name: "CIRTH LETTER Z", cirthNumber: 36},
         0xE0A4: {name: "CIRTH LETTER KHUZDUL NG", cirthNumber: 37},
-        0xE0A5: {name: "CIRTH LETTER ND", cirthNumber: '38_alt'},
-        0xE0A6: {name: "CIRTH LETTER EI", cirthNumber: 38},
+        0xE0A5: {name: "CIRTH LETTER ND", cirthNumber: 38},
+        0xE0A6: {name: "CIRTH LETTER EI", cirthNumber: '38_alt'},
         0xE0A7: {name: "CIRTH LETTER I", cirthNumber: 39},
         0xE0A8: {name: "CIRTH LETTER KHUZDUL Y", cirthNumber: 40},
         0xE0A9: {name: "CIRTH LETTER KHUZDUL HY", cirthNumber: 41},
@@ -178,8 +178,8 @@ const cirthData = {
         35: {keystroke: 'g'},
         36: {keystroke: 'h'},
         37: {keystroke: 'j'},
-        38: {keystroke: 'J'},
-        '38_alt': {keystroke: 'k'}, // which way round are these?
+        38: {keystroke: 'k'},
+        '38_alt': {keystroke: 'J'},
         39: {keystroke: 'l'},
         40: {keystroke: ';'},
         41: {keystroke: 'A'},
@@ -194,7 +194,7 @@ const cirthData = {
         49: {keystroke: 'v'},
         50: {keystroke: 'b'},
         51: {keystroke: 'n'},
-        '51_alt': {keystroke: 'M'}, // which way round are these?
+        '51_alt': {keystroke: 'M'},
         52: {keystroke: 'm'},
         '52_alt': {keystroke: '<'},
         53: {keystroke: ','},
@@ -374,7 +374,7 @@ const cirthData = {
 const cirthLayout = {
     cirthRows: [
         {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1'], leftchar: -3.5},
-        {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, 38, '38_alt', 'U4F'], leftchar: -3.5},
+        {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, '38_alt', 38, 'U4F'], leftchar: -3.5},
         {rowLabel: '3', cirth: [53, SPACE, 54, '52_alt', 'E7', 'E6', 'E4', 'U50', 'E5'], leftchar: -1.5},
         {rowLabel: '4', cirth: ['U5B', 'U59', 22, 33, 17, 52, 'U5A', SPACE, 'U53', 48, 49], leftchar: -3.5},
         {rowLabel: '5', cirth: [PUNCT_STAR, PUNCT_CROSS, 36, 37], leftchar: -2.5},
