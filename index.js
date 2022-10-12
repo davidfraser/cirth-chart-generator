@@ -443,12 +443,12 @@ const cirthData = {
 
 const cirthLayout = {
     textPositions: {
-        descriptionText: {x: 118.24999, y: 235.91302},
+        descriptionText: {x: 118.24999, y: 236.91302},
         punctuationTitle: {x: 180.27777, y: 136.91945},
         chartTitle: {x: -270.40067, y: 23.093559},
     },
     textSizes: {
-        descriptionText: {fontSize: 3.88056, lineHeight: 1.25},
+        descriptionText: {fontSize: 3.7, lineHeight: 1.25},
     },
     cirthRows: [
         {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1'], leftchar: -3.5},
