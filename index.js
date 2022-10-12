@@ -1,6 +1,5 @@
 const mustache = require('mustache');
 const fs = require('fs');
-const { isNumberObject } = require('util/types');
 
 const HALF_SPACE = {'special': 'half-space'};
 const FULL_SPACE = {'special': 'full-space'};
