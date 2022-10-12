@@ -10,13 +10,13 @@ const PUNCT_STAR = 'P*'; // FIXME: Punct Star is a character we don't know what 
 const PUNCT_CROSS = 'PX'; // FIXME: Punct Cross is a character we don't know what to do with yet
 const FUTHORC_EH = 'EH'; // Futhorc Eh is a character in the font, but did Tolkien ever use it in the Cirth?
 const E_ = 'E_'; // Erebor underscore??
-const CIRTH_PUNCT_MID_DOT = 'P49';
-const CIRTH_PUNCT_DOT = 'P5C';
-const CIRTH_PUNCT_TWO_DOTS = 'P4F';
-const CIRTH_PUNCT_THREE_DOTS = 'P50';
-const CIRTH_PUNCT_THREE_DOTS_L = 'P50';
-const CIRTH_PUNCT_FOUR_DOTS = 'P7D';
-const CIRTH_PUNCT_EQUAL = 'P=';
+const CIRTH_PUNCT_MID_DOT = 'P49';      // 73 == character for I which is how you type this
+const CIRTH_PUNCT_DOT = 'P5C';          // 92 == character for \ which is how you type this
+const CIRTH_PUNCT_TWO_DOTS = 'P4F';     // 79 == character for O which is how you type this
+const CIRTH_PUNCT_THREE_DOTS = 'P50';   // 80 == character for P which is how you type this
+const CIRTH_PUNCT_THREE_DOTS_L = 'P7B'; // 123 == character for { which is how you type this
+const CIRTH_PUNCT_FOUR_DOTS = 'P7D';    // 125 == character for } which is how you type this
+const CIRTH_PUNCT_EQUAL = 'P=';         // 61 / 0x3D would be the character for =
 
 const cirthData = {
     title: "Angerthas Erebor",
