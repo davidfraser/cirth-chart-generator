@@ -443,8 +443,8 @@ const cirthData = {
 
 const cirthLayout = {
     textPositions: {
-        legendLText: {x: 143.69112, y: 263.96681},
-        legendRText: {x: 159.23569, y: 261.90000},
+        legendLText: {x: 156.92776, y: 278.83761},
+        legendRText: {x: 172.47233, y: 276.77080},
         descriptionText: {x: 118.24999, y: 236.91302},
         punctuationTitle: {x: 180.27777, y: 136.91945},
         chartTitle: {x: -270.40067, y: 23.093559},
