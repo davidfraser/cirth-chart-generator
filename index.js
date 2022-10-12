@@ -442,6 +442,12 @@ const cirthData = {
 }
 
 const cirthLayout = {
+    tileMetrics: {
+        cirthOffset: {x: 81.417236, y: -16.574439},
+        cirthSpacing: {x: 16.68, y: 18.4154},
+        cirthPunctOffset: {x: 66.792236, y: 0},
+        cirthPunctSpacing: {x: 10.709, y: 18.4154},
+    },
     textPositions: {
         cirthLegend: {x: 157.95149, y: 276.338212},
         legendLText: {x: 156.92776, y: 278.83761},
@@ -546,8 +552,8 @@ function expandedLayout(layout, charLookup, orthLookup) {
     for (var cirthRow of layout['cirthRows']) {
         const rowLabel = cirthRow['rowLabel'];
         const rowOffset = cirthRow.leftchar;
-        var yOffset = parseFloat(rowLabel)*18.4154-91.20655+74.632111;
-        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: 69.792236, y: yOffset}};
+        var yOffset = parseFloat(rowLabel)*layout.tileMetrics.cirthSpacing.y + layout.tileMetrics.cirthOffset.y;
+        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: layout.tileMetrics.cirthOffset.x, y: yOffset}};
         var expandedChars = [];
         let indexOffset = 0;
         for (let [index, cirthNumber] of cirthRow['cirth'].entries()) {
@@ -559,7 +565,7 @@ function expandedLayout(layout, charLookup, orthLookup) {
                 continue;
             }
             var charInfo = compileCirthInfo(cirthNumber, charLookup, orthLookup);
-            var charOffset = (index + indexOffset + rowOffset)*16.68 + 11.625;
+            var charOffset = (index + indexOffset + rowOffset)*layout.tileMetrics.cirthSpacing.x;
             charInfo['offset'] = {x: charOffset, y: 0};
             expandedChars.push(charInfo);
         }
@@ -569,8 +575,8 @@ function expandedLayout(layout, charLookup, orthLookup) {
     for (var cirthRow of layout['punctuationRows']) {
         const rowLabel = cirthRow['rowLabel'];
         const rowOffset = cirthRow.leftchar;
-        var yOffset = parseFloat(rowLabel)*18.4154-91.20655;
-        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: 0, y: yOffset}};
+        var yOffset = parseFloat(rowLabel)*layout.tileMetrics.cirthSpacing.y+layout.tileMetrics.cirthOffset.y;
+        var expandedRow = {'rowLabel': rowLabel, 'offset': {x: layout.tileMetrics.cirthPunctOffset.x, y: yOffset}};
         var expandedChars = [];
         let indexOffset = 0;
         for (let [index, cirthNumber] of cirthRow['cirth'].entries()) {
@@ -582,8 +588,8 @@ function expandedLayout(layout, charLookup, orthLookup) {
                 continue;
             }
             var charInfo = compileCirthInfo(cirthNumber, charLookup, false);
-            var charOffset = (index + indexOffset + rowOffset)*10.709 - 3 + 69.792236;
-            charInfo['offset'] = {x: charOffset, y: 74.632111};
+            var charOffset = (index + indexOffset + rowOffset)*layout.tileMetrics.cirthPunctSpacing.x;
+            charInfo['offset'] = {x: charOffset, y: 0};
             charInfo['widechar'] = (cirthNumber == CIRTH_PUNCT_EQUAL);
             expandedChars.push(charInfo);
         }
