@@ -69,8 +69,8 @@ const cirthData = {
         0xE0AA: {name: "CIRTH LETTER U", cirthNumber: 42},
         0xE0AB: {name: "CIRTH LETTER UU", cirthNumber: 43},
         0xE0AC: {name: "CIRTH LETTER W", cirthNumber: 44},
-        0xE0AD: {name: "CIRTH LETTER UE", cirthNumber: 45},
-        0xE0AE: {name: "CIRTH LETTER UI", cirthNumber: '45_alt'},
+        0xE0AD: {name: "CIRTH LETTER UE", cirthNumber: 45}, // another variant as 'U2D'
+        0xE0AE: {name: "CIRTH LETTER UI", cirthNumber: '45_alt'}, // another variant as 'U2D_alt'
         0xE0AF: {name: "CIRTH LETTER E", cirthNumber: 46},
         0xE0B0: {name: "CIRTH LETTER EE", cirthNumber: 47},
         0xE0B1: {name: "CIRTH LETTER A", cirthNumber: 48},
@@ -134,10 +134,11 @@ const cirthData = {
         0xE0EB: {name: "CIRTH DOUBLE EM DASH", cirthNumber: 'P='},
         /*
         // These are from the tables at https://www.evertype.com/standards/csur/cirth.html, which are out of date
-        0xE0E9: {name: "CIRTH SEPARATOR DOUBLE PIPE", cirthNumber: '||'},
-        0xE0EA: {name: "CIRTH COMBINING NASAL MARK", cirthNumber: ''}, // in Dan Smith's Erebor font from characters 200-203, varying widths
-        0xE0EB: {name: "CIRTH COMBINING LENGTH MARK", cirthNumber: ''}, // in Dan Smith's Erebor font from characters 204-207, varying widths
-        0xE0EC: {name: "CIRTH COMBINING NUMERIC DOT", cirthNumber: ''}, // in Dan Smith's Erebor font from characters 209-211, varying widths
+        0xE0E9: {name: "CIRTH SEPARATOR DOUBLE PIPE", cirthNumber: '||'}, // we have this as DOUBLE_PIPE
+        // in Dan Smith's Erebor font these combining marks are present as a set of characters with varying widths
+        0xE0EA: {name: "CIRTH COMBINING NASAL MARK", cirthNumber: ''},  // from characters 200-203 / c8-cb
+        0xE0EB: {name: "CIRTH COMBINING LENGTH MARK", cirthNumber: ''}, // from characters 204-207 / cc-cf
+        0xE0EC: {name: "CIRTH COMBINING NUMERIC DOT", cirthNumber: ''}, // from characters 209-211 / d1-d3
         */
     },
     fontData: {
@@ -169,8 +170,8 @@ const cirthData = {
         26: {keystroke: 'Q'},
         27: {keystroke: 'W'},
         28: {keystroke: 'E'},
-        29: {keystroke: 'R'}, // R / right-facing "K" shape was numbered as 30 in the original chart, but that's wrong
-        30: {keystroke: 'T'}, // T / left-facing "K" shape was numbered as 29 in the original chart, but that's wrong
+        29: {keystroke: 'R'},
+        30: {keystroke: 'T'},
         31: {keystroke: 'a'},
         32: {keystroke: 's'},
         33: {keystroke: 'd'},
@@ -234,12 +235,12 @@ const cirthData = {
         U44: {keystroke: 'Þ'},
         U45: {keystroke: 'ß'},
         U53: {keystroke: 'û'},
-        U56: {keystroke: 'ð'}, //
-        U58: {keystroke: 'ò'}, //
-        U59: {keystroke: 'ó'}, //
+        U56: {keystroke: 'ð'},
+        U58: {keystroke: 'ò'},
+        U59: {keystroke: 'ó'},
         U5A: {keystroke: 'î'},
         U5B: {keystroke: 'ï'},
-        U5C: {keystroke: 'õ'}, //
+        U5C: {keystroke: 'õ'},
         U5D: {keystroke: 'è'},
         U5D_alt: {keystroke: 'ç'},
         U5F: {keystroke: 'ô'},
@@ -247,9 +248,9 @@ const cirthData = {
         U61: {keystroke: 'ø'},
         U62: {keystroke: 'ù'},
         U63: {keystroke: 'ú'},
-        U64: {keystroke: '÷'}, //
-        U65: {keystroke: 'ü'}, //
-        U66: {keystroke: 'ý'}, //
+        U64: {keystroke: '÷'},
+        U65: {keystroke: 'ü'},
+        U66: {keystroke: 'ý'},
         [DOUBLE_PIPE]: {keystroke: '|'},
         [PUNCT_STAR]: {keystroke: 'U'},
         [PUNCT_CROSS]: {keystroke: ']'},
@@ -333,8 +334,8 @@ const cirthData = {
         E7: {orthography: 'oa'},
         E_: {orthography: ''},
         [FUTHORC_EH]: {orthography: ''},
-        U2D: {orthography: 'iu'},
-        U2E: {orthography: 'ui'},
+        U2D: {orthography: 'iu'}, // very similar to cirth 45
+        U2E: {orthography: 'ui'}, // very similar to cirth 45_alt
         U46: {orthography: 'ndž'},
         U47: {orthography: ''},
         U48: {orthography: ''},
@@ -399,9 +400,6 @@ const cirthLayout = {
         {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 10},
     ],
 }
-
-// TODO: correct the names of these U items to be consistent
-// TODO: change the numbers that are displayed for these U times to be consistent
 
 function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
     var cirthId = typeof cirthNumber == 'number' ? cirthNumber.toString() : cirthNumber;
