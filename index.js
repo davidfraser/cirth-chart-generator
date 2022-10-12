@@ -5,11 +5,11 @@ const { isNumberObject } = require('util/types');
 const HALF_SPACE = {'special': 'half-space'};
 const FULL_SPACE = {'special': 'full-space'};
 const SPACE = FULL_SPACE;
-const DOUBLE_PIPE = '||'; // FIXME: Double Pipe is a character we don't know what to do with yet
-const PUNCT_STAR = 'P*'; // FIXME: Punct Star is a character we don't know what to do with yet
-const PUNCT_CROSS = 'PX'; // FIXME: Punct Cross is a character we don't know what to do with yet
+const DOUBLE_PIPE = '||';
+const PUNCT_STAR = 'P*';
+const PUNCT_CROSS = 'PX';
 const FUTHORC_EH = 'EH'; // Futhorc Eh is a character in the font, but did Tolkien ever use it in the Cirth?
-const E_ = 'E_'; // Erebor underscore??
+const E_ = 'E_'; // FIXME: Called Erebor underscore, but that seems to be based on the font name
 const CIRTH_PUNCT_MID_DOT = 'P49';      // 73 == character for I which is how you type this
 const CIRTH_PUNCT_DOT = 'P5C';          // 92 == character for \ which is how you type this
 const CIRTH_PUNCT_TWO_DOTS = 'P4F';     // 79 == character for O which is how you type this
