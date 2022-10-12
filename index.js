@@ -21,7 +21,7 @@ const CIRTH_PUNCT_EQUAL = 'P=';         // 61 / 0x3D would be the character for 
 const cirthData = {
     title: "Angerthas Erebor",
     name: "angerthas-erebor",
-    chars: {
+    fontData: {
         1: {keystroke: '1'},
         2: {keystroke: '2'},
         3: {keystroke: '3'},
@@ -391,7 +391,7 @@ function expandedLayout(layout, charLookup, orthLookup) {
 
 try {
     const templateText = fs.readFileSync('cirth-chart.svg.mustache', {encoding: 'utf-8'});
-    const layout = expandedLayout(cirthLayout, cirthData['chars'], cirthData['orthography']);
+    const layout = expandedLayout(cirthLayout, cirthData['fontData'], cirthData['orthography']);
     const templateData = Object.assign({}, cirthData, layout);
     const cirthSvg = mustache.render(templateText, templateData);
     fs.writeFileSync(`cirth-chart-${cirthData['name']}.svg`, cirthSvg)
