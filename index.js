@@ -496,8 +496,9 @@ const cirthLayouts = {
         name: 'landscape',
         // note some metrics are interpreted inverted in landscape mode
         tileMetrics: {
-            cirthOffset: {x: 80, y: -16.574439},
-            cirthSpacing: {x: 17.8, y: 17.1},
+            cirthOffset: {x: 80, y: -14.574439},
+            cirthSpacing: {x: 17.2, y: 17},
+            cirthScaling: {x: 0.95, y: 0.95},
             cirthPunctOffset: {x: 82, y: 0},
             cirthPunctSpacing: {x: 9.9, y: 18.9},
         },
@@ -704,8 +705,8 @@ function expandedLayout(layout, charLookup, orthLookup) {
     } else {
         pageLayout = {width: '297', height: '210'}
     }
-    return {'cirthRows': cirthLayout, 'punctuationRows': punctuationLayout,
-            'textSizes': layout.textSizes, 'textPositions': layout.textPositions, 'pageLayout': pageLayout};
+    return {'cirthRows': cirthLayout, 'punctuationRows': punctuationLayout, 'tileMetrics': layout.tileMetrics,
+            'textSizes': layout.textSizes, 'textPositions': layout.textPositions, pageLayout};
 }
 
 try {

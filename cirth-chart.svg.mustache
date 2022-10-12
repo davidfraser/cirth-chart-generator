@@ -234,7 +234,8 @@
          id="gCirth{{cirthId}}"
          class="{{cirthStyle}}"
          inkscape:label="gCirth{{cirthLabel}}"
-         transform="translate({{offset.x}},{{offset.y}})">
+         transform="translate({{offset.x}},{{offset.y}})
+         {{#tileMetrics.cirthScaling}}scale({{tileMetrics.cirthScaling.x}} {{tileMetrics.cirthScaling.y}}){{/tileMetrics.cirthScaling}}">
         <rect
            class="cirth"
            id="rectCirth{{cirthId}}"
