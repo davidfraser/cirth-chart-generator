@@ -58,7 +58,7 @@ const cirthModes = {
         name: 'angerthas-daeron',
         language: 'Sindarin or Quenya',
         orthography: {
-            7: {orthography: 'mh|mb'},
+            7: {orthography: 'mh|mb', reduceSize: true},
             12: {orthography: 'n'},
             14: {orthography: 'j'},
             16: {orthography: 'zh'},
@@ -592,6 +592,9 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
             orthInfo.orthography = '-';
         if (orthInfo.isWord == true) {
             cirthStyle += ' cirthWord';
+        }
+        if (orthInfo.reduceSize == true) {
+            orthInfo.smallOrthography = true;
         }
         charInfo = Object.assign(charInfo, orthInfo);
     }

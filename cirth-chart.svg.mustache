@@ -159,6 +159,12 @@
       fill: #008000;
       stroke-width: 0.264583
     }
+    text.smallOrthography {
+      font-size: 3.5px;
+    }
+    text.smallOrthography tspan {
+      font-size: 3.5px;
+    }
     g.cirthUnicode text.orthography tspan {
       fill: #666666;
     }
@@ -309,7 +315,7 @@
              id="tspanCirthCharacter{{cirthId}}">{{fontCharacter}}</tspan></text>
         <text
            xml:space="preserve"
-           class="orthography"
+           class="{{#smallOrthography}}smallOrthography{{/smallOrthography}} orthography"
            x="6.873"
            y="15.867"
            id="textOrthography{{cirthId}}"
