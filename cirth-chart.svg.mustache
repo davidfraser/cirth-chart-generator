@@ -187,6 +187,41 @@
       -inkscape-font-specification: Merriweather;
       stroke-width: 0.264583
     }
+    text.chartTitle {
+      font-size: {{textSizes.chartTitle.fontSize}}px;
+      line-height: 1.25;
+      font-family: Alegreya;
+      font-weight: 600;
+      -inkscape-font-specification: 'Alegreya Semi-Bold';
+    }
+    text.chartTitle tspan {
+      font-size: {{textSizes.chartTitle.fontSize}}px;
+      line-height: 1.25;
+      font-family: Alegreya;
+      font-weight: 600;
+      -inkscape-font-specification: 'Alegreya Semi-Bold';
+    }
+    text.punctuationTitle tspan {
+      font-size: {{textSizes.punctuationTitle.fontSize}}px;
+      line-height: 1.25;
+      font-family: Alegreya;
+      font-weight: 500;
+      -inkscape-font-specification: 'Alegreya Bold';
+    }
+    text.punctuationTitle {
+      font-size: {{textSizes.punctuationTitle.fontSize}}px;
+      line-height: 1.25;
+      font-family: Alegreya;
+      font-weight: 500;
+      -inkscape-font-specification: 'Alegreya Bold';
+    }
+    text.punctuationTitle tspan {
+      font-size: {{textSizes.punctuationTitle.fontSize}}px;
+      line-height: 1.25;
+      font-family: Alegreya;
+      font-weight: 500;
+      -inkscape-font-specification: 'Alegreya Bold';
+    }
   </style>
   <g
      inkscape:label="Layer 1"
@@ -438,7 +473,7 @@
            style="fill:#800080"
            x="{{textPositions.legendRText.x}}"
            y="{{textPositions.legendRText.y4}}"
-           id="text1432049"
+           id="textKeyUnicodeNumber"
            inkscape:label="textKeyUnicodeNumber"><tspan><tspan
              sodipodi:role="line"
              id="tspanKeyUnicodeNumber"
@@ -502,15 +537,14 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:19.7556px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;stroke-width:0.264583"
+       class="chartTitle"
        x="{{textPositions.chartTitle.x}}"
        y="{{textPositions.chartTitle.y}}"
        id="textTitle"
        transform="rotate(-90)"
        inkscape:label="textTitle"><tspan
          sodipodi:role="line"
-         id="tspan1453093"
-         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:19.7556px;font-family:Alegreya;-inkscape-font-specification:'Alegreya Semi-Bold';stroke-width:0.264583"
+         id="tspanTitle"
          x="{{textPositions.chartTitle.x}}"
          y="{{textPositions.chartTitle.y}}">{{title}}</tspan></text>
     <text
@@ -630,15 +664,12 @@
     {{/punctuationRows}}
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Merriweather;stroke-width:0.264583"
+       class="punctuationTitle"
        x="{{textPositions.punctuationTitle.x}}"
        y="{{textPositions.punctuationTitle.y}}"
        id="textPunctuationTitle"
        inkscape:label="textPunctuationTitle"><tspan
          sodipodi:role="line"
-         id="tspan1575186"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:Alegreya;-inkscape-font-specification:'Alegreya Medium';stroke-width:0.264583"
-         x="180.27777"
-         y="136.91945">Punctuation</tspan></text>
+         id="tspanPunctuationTitle">Punctuation</tspan></text>
   </g>
 </svg>

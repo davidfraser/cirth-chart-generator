@@ -452,6 +452,8 @@ const cirthLayout = {
     textSizes: {
         descriptionText: {fontSize: 3.7, lineHeight: 1.25},
         legendText: {fontSize: 2.46944, lineHeight: 1.25},
+        punctuationTitle: {fontSize: 4.23333},
+        chartTitle: {fontSize: 19.7556},
     },
     cirthRows: [
         {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1'], leftchar: -3.5},
