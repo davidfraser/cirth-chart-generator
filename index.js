@@ -443,12 +443,15 @@ const cirthData = {
 
 const cirthLayout = {
     textPositions: {
+        legendLText: {x: 143.69112, y: 263.96681},
+        legendRText: {x: 159.23569, y: 261.90000},
         descriptionText: {x: 118.24999, y: 236.91302},
         punctuationTitle: {x: 180.27777, y: 136.91945},
         chartTitle: {x: -270.40067, y: 23.093559},
     },
     textSizes: {
         descriptionText: {fontSize: 3.7, lineHeight: 1.25},
+        legendText: {fontSize: 2.46944, lineHeight: 1.25},
     },
     cirthRows: [
         {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1'], leftchar: -3.5},
@@ -591,6 +594,24 @@ function expandedLayout(layout, charLookup, orthLookup) {
     for (let textRow=0; textRow < 12; textRow++) {
         layout.textPositions.descriptionText['y'+textRow.toString()] = descY + descRH*textRow;
     }
+    const legendFS = layout.textSizes.legendText.fontSize;
+    const legendLH = layout.textSizes.legendText.lineHeight;
+    const legendRY = layout.textPositions.legendRText.y;
+    const legendLY = layout.textPositions.legendLText.y;
+    const legendRH = legendFS*legendLH;
+    let legendOffset = 0;
+    for (let textRow=0; textRow < 6; textRow++) {
+        // 0 and 1 are grouped together. 2 and 3 and 4 are grouped together
+        if (textRow == 2 || textRow == 5) legendOffset += 1;
+        layout.textPositions.legendRText['y'+textRow.toString()] = legendRY + legendFS*textRow + (legendLH-1)*legendOffset*3;
+    }
+    legendOffset = 0;
+    for (let textRow=0; textRow < 6; textRow++) {
+        // 0 and 1 and 2 are grouped together. 3 and 4 are grouped together, later on
+        if (textRow == 3) legendOffset += 3;
+        layout.textPositions.legendLText['y'+textRow.toString()] = legendLY + legendFS*textRow + (legendLH-1)*legendOffset*3;
+    }
+
     return {'cirthRows': cirthLayout, 'punctuationRows': punctuationLayout,
             'textSizes': layout.textSizes, 'textPositions': layout.textPositions};
 }
