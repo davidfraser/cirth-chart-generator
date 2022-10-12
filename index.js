@@ -373,6 +373,14 @@ const cirthData = {
 }
 
 const cirthLayout = {
+    textPositions: {
+        descriptionText: {x: 118.24999, y: 237.91302},
+        punctuationTitle: {x: 180.27777, y: 136.91945},
+        chartTitle: {x: -270.40067, y: 23.093559},
+    },
+    textSizes: {
+        descriptionText: {fontSize: 3.88056, lineHeight: 1.25},
+    },
     cirthRows: [
         {rowLabel: '1', cirth: ['U66', SPACE, 'U65', 'U5C', SPACE, SPACE, SPACE, SPACE, HALF_SPACE, 'U64', 'E1'], leftchar: -3.5},
         {rowLabel: '2', cirth: ['U58', '#4', 'U56', E_, 50, 51, '51_alt', FUTHORC_EH, '38_alt', 38, 'U4F'], leftchar: -3.5},
@@ -504,7 +512,15 @@ function expandedLayout(layout, charLookup, orthLookup) {
         expandedRow['cirth'] = expandedChars;
         punctuationLayout.push(expandedRow);
     }
-    return {'cirthRows': cirthLayout, 'punctuationRows': punctuationLayout};
+    const descFS = layout.textSizes.descriptionText.fontSize;
+    const descLH = layout.textSizes.descriptionText.lineHeight;
+    const descY = layout.textPositions.descriptionText.y;
+    const descRH = descFS*descLH;
+    for (let textRow=0; textRow < 12; textRow++) {
+        layout.textPositions.descriptionText['y'+textRow.toString()] = descY + descRH*textRow;
+    }
+    return {'cirthRows': cirthLayout, 'punctuationRows': punctuationLayout,
+            'textSizes': layout.textSizes, 'textPositions': layout.textPositions};
 }
 
 try {
