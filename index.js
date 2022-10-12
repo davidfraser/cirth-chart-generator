@@ -526,12 +526,16 @@ function expandedLayout(layout, charLookup, orthLookup) {
 }
 
 try {
-    const cirthMode = cirthModes.erebor;
-    const templateText = fs.readFileSync('cirth-chart.svg.mustache', {encoding: 'utf-8'});
-    const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography);
-    const templateData = Object.assign({}, cirthData, cirthMode, layout);
-    const cirthSvg = mustache.render(templateText, templateData);
-    fs.writeFileSync(`cirth-chart-${cirthData['name']}.svg`, cirthSvg)
+    for (const [modeId, cirthMode] of Object.entries(cirthModes)) {
+        if (cirthMode.name == undefined) continue;
+        const filename = `cirth-chart-${cirthMode.name}.svg`;
+        console.log(`Writing diagram for ${modeId} (${cirthMode.title}) into ${filename}`);
+        const templateText = fs.readFileSync('cirth-chart.svg.mustache', {encoding: 'utf-8'});
+        const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography);
+        const templateData = Object.assign({}, cirthData, cirthMode, layout);
+        const cirthSvg = mustache.render(templateText, templateData);
+        fs.writeFileSync(filename, cirthSvg)
+    }
 } catch(err) {
     console.error(err);
 }
