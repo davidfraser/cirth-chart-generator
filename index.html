@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Cirth Chart Generator</title>
+        <script type="module">
+            import Mustache from 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.js';
+            import 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js';
+            import { renderCirthSVG } from './index.js';
+            function renderChart() {
+                fetch('./cirth-chart.svg.mustache').then((response) => {
+                    return response.text();
+                }).then((templateText) => {
+                    var output = renderCirthSVG(Mustache, templateText, $('#cirthMode').val(), $('#cirthLayout').val());
+                    $('#chart').html(output);
+                });
+            };
+            renderChart();
+            $('#cirthMode').change(renderChart);
+            $('#cirthLayout').change(renderChart);
+        </script>
+        <style type='text/css'>
+            @media print {
+                .hidden-print {
+                    display: none !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <select id="cirthMode" name="cirthMode" class="hidden-print">
+            <option value="daeron" selected="true">Angerthas Daeron</option>
+            <option value="moria">Angerthas Moria</option>
+            <option value="erebor">Angerthas Erebor</option>
+        </select>
+        <select id="cirthLayout" name="cirthLayout" class="hidden-print">
+            <option value="landscape" selected="true">Landscape</option>
+            <option value="portrait">Portrait</option>
+        </select>
+        <div id="chart"></div>
+    </body>
+</html>
