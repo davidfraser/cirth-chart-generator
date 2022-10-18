@@ -15,5 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "mustache": "^4.2.0"
+  },
+  "devDependencies": {
+    "jquery": "^3.6.1"
   }
 }
