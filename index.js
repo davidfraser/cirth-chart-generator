@@ -699,12 +699,7 @@ function expandedLayout(layout, charLookup, orthLookup) {
         if (textRow == 3) legendOffset += 3;
         layout.textPositions.legendLText['y'+textRow.toString()] = legendLY + legendFS*textRow + (legendLH-1)*legendOffset*3;
     }
-    let pagelayout = {};
-    if (layout.orientation == 'portrait') {
-        pageLayout = {width: '210', height: '297'}
-    } else {
-        pageLayout = {width: '297', height: '210'}
-    }
+    const pageLayout = (layout.orientation == 'portrait') ? {width: '210', height: '297'} : {width: '297', height: '210'};
     return {'cirthRows': cirthLayout, 'punctuationRows': punctuationLayout, 'tileMetrics': layout.tileMetrics,
             'textSizes': layout.textSizes, 'textPositions': layout.textPositions, pageLayout};
 }
