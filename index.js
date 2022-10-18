@@ -1,6 +1,3 @@
-const mustache = require('mustache');
-const fs = require('fs');
-
 const HALF_SPACE = {'special': 'half-space'};
 const FULL_SPACE = {'special': 'full-space'};
 const SPACE = FULL_SPACE;
@@ -704,21 +701,42 @@ function expandedLayout(layout, charLookup, orthLookup) {
             'textSizes': layout.textSizes, 'textPositions': layout.textPositions, pageLayout};
 }
 
-try {
-    for (const [modeId, cirthMode] of Object.entries(cirthModes)) {
-        for (const [layoutId, cirthLayout] of Object.entries(cirthLayouts)) {
-            if (cirthMode.name == undefined) continue;
-            const filename = `cirth-chart-${cirthMode.name}-${layoutId}.svg`;
-            console.log(`Writing diagram for ${modeId} (${cirthMode.title}) into ${filename}`);
-            const calculatedOrthography = Object.assign({}, cirthModes.common.orthography, cirthMode.orthography);
-            cirthMode.orthography = calculatedOrthography;
-            const templateText = fs.readFileSync('cirth-chart.svg.mustache', {encoding: 'utf-8'});
-            const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography);
-            const templateData = Object.assign({}, cirthData, cirthMode, layout);
-            const cirthSvg = mustache.render(templateText, templateData);
-            fs.writeFileSync(filename, cirthSvg)
-        }
-    }
-} catch(err) {
-    console.error(err);
+function getCirthTemplateData(modeId, layoutId) {
+    const cirthMode = cirthModes[modeId];
+    const cirthLayout = cirthLayouts[layoutId];
+    const calculatedOrthography = Object.assign({}, cirthModes.common.orthography, cirthMode.orthography);
+    cirthMode.orthography = calculatedOrthography;
+    const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography);
+    const templateData = Object.assign({}, cirthData, cirthMode, layout);
+    return templateData;
 }
+
+export function renderCirthSVG(mustache, templateText, modeId, layoutId) {
+    const templateData = getCirthTemplateData(modeId, layoutId);
+    const cirthSvg = mustache.render(templateText, templateData);
+    return cirthSvg;
+}
+
+function cmdLine() {
+    const fs = require('fs');
+    const mustache = require('mustache');
+    try {
+        for (const [modeId, cirthMode] of Object.entries(cirthModes)) {
+            for (const [layoutId, cirthLayout] of Object.entries(cirthLayouts)) {
+                if (cirthMode.name == undefined) continue;
+                const filename = `cirth-chart-${cirthMode.name}-${layoutId}.svg`;
+                console.log(`Writing diagram for ${modeId} (${cirthMode.title}) into ${filename}`);
+                const templateText = fs.readFileSync('cirth-chart.svg.mustache', {encoding: 'utf-8'});
+                const cirthSvg = renderCirthSVG(mustache, templateText, modeId, layoutId);
+                fs.writeFileSync(filename, cirthSvg);
+            }
+        }
+    } catch(err) {
+        console.error(err);
+    }
+}
+
+if (typeof require !== 'undefined' && typeof module !== 'undefined' && require.main === module) {
+    cmdLine();
+}
+
