@@ -586,7 +586,7 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
     if (orthLookup !== false) {
         var orthInfo = orthLookup[cirthId.replace('_alt', '')];
         if (orthInfo === undefined) {
-            console.debug(`Couldn't find orthography for ${cirthNumber}`);
+            // console.debug(`Couldn't find orthography for ${cirthNumber}`);
             orthInfo = {'orthography': ''};
         }
         if (orthInfo.orthography == '')
