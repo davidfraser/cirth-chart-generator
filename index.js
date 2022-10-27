@@ -539,9 +539,9 @@ export const cirthLayouts = {
             {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6], leftchar: -4},
         ],
         punctuationRows: [
-            {rowLabel: '8.44', cirth: [CIRTH_PUNCT_EQUAL, CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 10},
-            {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L], leftchar: 11},
-            {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 11},
+            {rowLabel: '8.44', cirth: [CIRTH_PUNCT_EQUAL, CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 9.8},
+            {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L], leftchar: 10.8},
+            {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 10.8},
         ],
     },
 }
