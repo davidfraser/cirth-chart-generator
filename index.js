@@ -476,20 +476,20 @@ export const cirthLayouts = {
             {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41], leftchar: -3},
             {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D'], leftchar: -2},
             {rowLabel: '10', cirth: [26, 11, 10, 8, 9, 24], leftchar: -3},
-            {rowLabel: '10.5', cirth: [43, "U63", "U61", "U62"], leftchar: 3.5},
+            {rowLabel: '10.5', cirth: [43, "U63", "U61", "U62"], leftchar: 3.25},
             {rowLabel: '11', cirth: [21, 20, 18, 19], leftchar: -2},
-            {rowLabel: '11.5', cirth: [45, "U2D", 42, 44], leftchar: 3.5},
+            {rowLabel: '11.5', cirth: [45, "U2D", 42, 44], leftchar: 3.25},
             {rowLabel: '12', cirth: [34, 30, 29, 35], leftchar: -2},
-            {rowLabel: '12.5', cirth: ["45_alt", "U2E", SPACE, 5], leftchar: 3.5},
+            {rowLabel: '12.5', cirth: ["45_alt", "U2E", SPACE, 5], leftchar: 3.25},
             {rowLabel: '13', cirth: [16, 15, 13, 14], leftchar: -2},
             {rowLabel: '14', cirth: ['U45', 'U44', 'U42', 'U43'], leftchar: -2},
             {rowLabel: '15', cirth: [58, 57], leftchar: -1},
             {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6], leftchar: -4},
         ],
         punctuationRows: [
-            {rowLabel: '8.44', cirth: [CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 10},
-            {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L, CIRTH_PUNCT_EQUAL], leftchar: 10},
-            {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 10},
+            {rowLabel: '8.44', cirth: [CIRTH_PUNCT_EQUAL, CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 9.8},
+            {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L], leftchar: 11},
+            {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 11},
         ],
     },
     landscape: {
@@ -527,20 +527,20 @@ export const cirthLayouts = {
             {rowLabel: '8', cirth: ['U4D', 25, 60, 'U5F', 23, 28, HALF_SPACE, 40, 41], leftchar: -3},
             {rowLabel: '9', cirth: ['U4A', 'U49', 'U47', 'U48', 'U5D_alt', HALF_SPACE, 'U5D'], leftchar: -2},
             {rowLabel: '10', cirth: [26, 11, 10, 8, 9, 24], leftchar: -3},
-            {rowLabel: '10.5', cirth: [43, "U63", "U61", "U62"], leftchar: 3.5},
+            {rowLabel: '10.5', cirth: [43, "U63", "U61", "U62"], leftchar: 3.25},
             {rowLabel: '11', cirth: [21, 20, 18, 19], leftchar: -2},
-            {rowLabel: '11.5', cirth: [45, "U2D", 42, 44], leftchar: 3.5},
+            {rowLabel: '11.5', cirth: [45, "U2D", 42, 44], leftchar: 3.25},
             {rowLabel: '12', cirth: [34, 30, 29, 35], leftchar: -2},
-            {rowLabel: '12.5', cirth: ["45_alt", "U2E", SPACE, 5], leftchar: 3.5},
+            {rowLabel: '12.5', cirth: ["45_alt", "U2E", SPACE, 5], leftchar: 3.25},
             {rowLabel: '13', cirth: [16, 15, 13, 14], leftchar: -2},
             {rowLabel: '14', cirth: ['U45', 'U44', 'U42', 'U43'], leftchar: -2},
             {rowLabel: '15', cirth: [58, 57], leftchar: -1},
             {rowLabel: '16', cirth: ['U60', 7, 4, 3, 1, 2, 6], leftchar: -4},
         ],
         punctuationRows: [
-            {rowLabel: '8.44', cirth: [CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 10},
-            {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L, CIRTH_PUNCT_EQUAL], leftchar: 10},
-            {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 10},
+            {rowLabel: '8.44', cirth: [CIRTH_PUNCT_EQUAL, CIRTH_PUNCT_MID_DOT, CIRTH_PUNCT_THREE_DOTS], leftchar: 10},
+            {rowLabel: '9', cirth: [CIRTH_PUNCT_DOT, CIRTH_PUNCT_THREE_DOTS_L], leftchar: 11},
+            {rowLabel: '9.55', cirth: [CIRTH_PUNCT_TWO_DOTS, CIRTH_PUNCT_FOUR_DOTS], leftchar: 11},
         ],
     },
 }
@@ -689,6 +689,7 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
                 charInfo['offset'] = {x: 0, y: charOffset};
             }
             charInfo['widechar'] = (cirthNumber == CIRTH_PUNCT_EQUAL);
+            if (charInfo['widechar'] && orientation == 'portrait') indexOffset += 0.2;
             expandedChars.push(charInfo);
         }
         expandedRow['cirth'] = expandedChars;
