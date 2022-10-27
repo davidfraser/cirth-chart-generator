@@ -494,6 +494,7 @@ export const cirthLayouts = {
     },
     landscape: {
         name: 'landscape',
+        orientation: 'landscape',
         // note some metrics are interpreted inverted in landscape mode
         tileMetrics: {
             cirthOffset: {x: 80, y: -14.574439},
@@ -652,14 +653,27 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
         }
     }
     let shiftPunctuationRows = 0;
+    let shiftLegendRows = 0;
     for (let skippedRow of rowsSkipped) {
         // this is non-automatic: the punctuation block can't clash with row 8
-        if (skippedRow >= 9) continue;
-        shiftPunctuationRows += 1;
+        if (skippedRow < 9) shiftPunctuationRows += 1;
+        if (skippedRow < 11) shiftLegendRows += 1;
     }
     if (shiftPunctuationRows != 0) {
         console.log(`Adjusting punctuation block by ${shiftPunctuationRows}`);
-        layout.textPositions.punctuationTitle.y -= layout.tileMetrics.cirthSpacing.x * shiftPunctuationRows;
+        layout.textPositions.punctuationTitle.y -= layout.tileMetrics.cirthSpacing.y * shiftPunctuationRows;
+    }
+    if (shiftLegendRows > 0) {
+        console.log("Adjusting legend by ${shiftLegendRows}");
+        if (orientation == 'portrait') {
+            for (let textItem of ['cirthLegend', 'legendLText', 'legendRText', 'descriptionText']) {
+                layout.textPositions[textItem].y -= layout.tileMetrics.cirthSpacing.y * shiftLegendRows;
+            }
+        } else if (orientation == 'landscape') {
+            for (let textItem of ['cirthLegend', 'legendLText', 'legendRText', 'descriptionText']) {
+                layout.textPositions[textItem].x -= layout.tileMetrics.cirthSpacing.x * shiftLegendRows;
+            }
+        }
     }
 
     for (var cirthRow of layout['punctuationRows']) {
