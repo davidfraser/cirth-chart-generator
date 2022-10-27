@@ -5,12 +5,27 @@
             import 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js';
             // import './node_modules/jquery/dist//jquery.min.js';
             import { renderCirthSVG } from './index.js';
+            function clickCirth(element) {
+                const id = element.id.replace('gCirth', '');
+                var symbolElement = element.querySelector('text.symbol');
+                const text = symbolElement.textContent;
+                console.log(`Clicked Cirth ${id}; adding text ${text}`);
+                var textElement = document.getElementById('cirthText');
+                textElement.setRangeText(text, textElement.selectionStart, textElement.selectionEnd, 'end');
+                textElement.focus();
+            }
             function renderChart() {
                 fetch('./cirth-chart.svg.mustache').then((response) => {
                     return response.text();
                 }).then((templateText) => {
                     var output = renderCirthSVG(templateText, $('#cirthMode').val(), $('#cirthLayout').val());
                     $('#chart').html(output);
+                    var cirthItems = document.querySelectorAll("svg g.cirthClick");
+                    cirthItems.forEach(
+                        function(element) {
+                            element.addEventListener('click', function() { clickCirth(element); });
+                        }
+                    )
                 });
             };
             renderChart();
@@ -23,18 +38,33 @@
                     display: none !important;
                 }
             }
+            div#controls {
+                display: flex;
+                flex-direction: row;
+                width: '100%';
+            }
+            div#controls select {
+                margin-right: 5px;
+            }
+            input#cirthText {
+                font-family: 'Cirth Erebor';
+                flex: 1;
+            }
         </style>
     </head>
     <body>
-        <select id="cirthMode" name="cirthMode" class="hidden-print">
-            <option value="daeron" selected="true">Angerthas Daeron</option>
-            <option value="moria">Angerthas Moria</option>
-            <option value="erebor">Angerthas Erebor</option>
-        </select>
-        <select id="cirthLayout" name="cirthLayout" class="hidden-print">
-            <option value="landscape" selected="true">Landscape</option>
-            <option value="portrait">Portrait</option>
-        </select>
+        <div id="controls">
+            <select id="cirthMode" name="cirthMode" class="hidden-print">
+                <option value="daeron" selected="true">Angerthas Daeron</option>
+                <option value="moria">Angerthas Moria</option>
+                <option value="erebor">Angerthas Erebor</option>
+            </select>
+            <select id="cirthLayout" name="cirthLayout" class="hidden-print">
+                <option value="landscape" selected="true">Landscape</option>
+                <option value="portrait">Portrait</option>
+            </select>
+            <input type="text" id="cirthText"/>
+        </div>
         <div id="chart"></div>
     </body>
 </html>
