@@ -608,10 +608,13 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
     const orientation = layout.orientation;
     var cirthLayout = [];
     var punctuationLayout = [];
+    const rowsSkipped = [];
+    var unusedRows = 0;
     for (var cirthRow of layout['cirthRows']) {
         const rowLabel = cirthRow['rowLabel'];
         const rowOffset = cirthRow.leftchar;
-        var yOffset = parseFloat(rowLabel)*layout.tileMetrics.cirthSpacing.y + layout.tileMetrics.cirthOffset.y;
+        const rowNumber = parseFloat(rowLabel) - unusedRows;
+        var yOffset = rowNumber*layout.tileMetrics.cirthSpacing.y + layout.tileMetrics.cirthOffset.y;
         let offset = {}
         if (orientation == 'portrait') {
             offset = {x: layout.tileMetrics.cirthOffset.x, y: yOffset};
@@ -639,13 +642,28 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
             }
             expandedChars.push(charInfo);
         }
-        expandedRow['cirth'] = expandedChars;
-        cirthLayout.push(expandedRow);
+        if (expandedChars.length > 0) {
+            expandedRow['cirth'] = expandedChars;
+            cirthLayout.push(expandedRow);
+        } else {
+            unusedRows += 1;
+            rowsSkipped.push(parseFloat(rowLabel));
+            console.log("Skipped row at", rowLabel);
+        }
     }
+    let shiftPunctuationRows = 0;
+    for (let skippedRow of rowsSkipped) {
+        // this is non-automatic: the punctuation block can't clash with row 8
+        if (skippedRow >= 9) continue;
+        shiftPunctuationRows += 1;
+    }
+    console.log(`Adjusting punctuation block by ${shiftPunctuationRows}`);
+
     for (var cirthRow of layout['punctuationRows']) {
         const rowLabel = cirthRow['rowLabel'];
         const rowOffset = cirthRow.leftchar;
-        var yOffset = parseFloat(rowLabel)*layout.tileMetrics.cirthSpacing.y+layout.tileMetrics.cirthOffset.y;
+        const rowNumber = parseFloat(rowLabel) - shiftPunctuationRows;
+        var yOffset = rowNumber*layout.tileMetrics.cirthSpacing.y+layout.tileMetrics.cirthOffset.y;
         let offset = {}
         if (orientation == 'portrait') {
             offset = {x: layout.tileMetrics.cirthPunctOffset.x, y: yOffset};
