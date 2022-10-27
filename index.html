@@ -18,7 +18,8 @@
                 fetch('./cirth-chart.svg.mustache').then((response) => {
                     return response.text();
                 }).then((templateText) => {
-                    var output = renderCirthSVG(templateText, $('#cirthMode').val(), $('#cirthLayout').val());
+                    const byId = (id) => document.getElementById(id);
+                    var output = renderCirthSVG(templateText, byId('cirthMode').value, byId('cirthLayout').value, byId('cirthUnused').checked);
                     $('#chart').html(output);
                     var cirthItems = document.querySelectorAll("svg g.cirthClick");
                     cirthItems.forEach(
@@ -33,8 +34,9 @@
                 navigator.clipboard.writeText(textElement.value);
             }
             renderChart();
-            $('#cirthMode').change(renderChart);
-            $('#cirthLayout').change(renderChart);
+            document.getElementById('cirthMode').addEventListener('change', renderChart);
+            document.getElementById('cirthLayout').addEventListener('change', renderChart);
+            document.getElementById('cirthUnused').addEventListener('change', renderChart);
             document.getElementById('copyCirth').addEventListener('click', copyText);
         </script>
         <style type='text/css'>
@@ -48,7 +50,7 @@
                 flex-direction: row;
                 width: '100%';
             }
-            div#controls select {
+            div#controls .control {
                 margin-right: 5px;
             }
             div#controls input {
@@ -57,6 +59,12 @@
             input#cirthText {
                 font-family: 'Cirth Erebor';
                 flex: 1;
+            }
+            div#controls span.control input {
+                vertical-align: middle;
+            }
+            div#controls span.control label {
+                vertical-align: middle;
             }
             body {
                 height: 100%;
@@ -80,17 +88,21 @@
     <body>
         <div id="page">
             <div id="controls">
-                <select id="cirthMode" name="cirthMode" class="hidden-print">
+                <select id="cirthMode" name="cirthMode" class="hidden-print control">
                     <option value="daeron" selected="true">Angerthas Daeron</option>
                     <option value="moria">Angerthas Moria</option>
                     <option value="erebor">Angerthas Erebor</option>
                 </select>
-                <select id="cirthLayout" name="cirthLayout" class="hidden-print">
+                <select id="cirthLayout" name="cirthLayout" class="hidden-print control">
                     <option value="landscape" selected="true">Landscape</option>
                     <option value="portrait">Portrait</option>
                 </select>
-                <input type="text" id="cirthText"/>
-                <input type="button" name="copyCirth" id="copyCirth" value="Copy"/>
+                <span title="Include unused Cirth?" class="control">
+                    <input id="cirthUnused" name="cirthUnused" class="hidden-print" type="checkbox" checked="checked"/>
+                    <label for="cirthUnused">-</label>
+                </span>
+                <input type="text" id="cirthText" class="control"/>
+                <input type="button" name="copyCirth" id="copyCirth" value="Copy" class="hidden-print control"/>
             </div>
             <div id="chart"></div>
         </div>

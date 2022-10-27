@@ -603,7 +603,7 @@ function compileCirthInfo(cirthNumber, charLookup, orthLookup) {
     return charInfo;
 }
 
-function expandedLayout(layout, charLookup, orthLookup) {
+function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
     // this includes the relevant character information into the layout
     const orientation = layout.orientation;
     var cirthLayout = [];
@@ -630,6 +630,7 @@ function expandedLayout(layout, charLookup, orthLookup) {
                 continue;
             }
             var charInfo = compileCirthInfo(cirthNumber, charLookup, orthLookup);
+            if (!includeUnused && charInfo.orthography == '-') continue;
             var charOffset = (index + indexOffset + rowOffset)*layout.tileMetrics.cirthSpacing.x;
             if (orientation == 'portrait') {
                 charInfo['offset'] = {x: charOffset, y: 0};
@@ -704,18 +705,19 @@ function expandedLayout(layout, charLookup, orthLookup) {
             'textSizes': layout.textSizes, 'textPositions': layout.textPositions, pageLayout};
 }
 
-function getCirthTemplateData(modeId, layoutId) {
+function getCirthTemplateData(modeId, layoutId, includeUnused) {
     const cirthMode = cirthModes[modeId];
     const cirthLayout = cirthLayouts[layoutId];
     const calculatedOrthography = Object.assign({}, cirthModes.common.orthography, cirthMode.orthography);
     cirthMode.orthography = calculatedOrthography;
-    const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography);
+    const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography, includeUnused);
     const templateData = Object.assign({}, cirthData, cirthMode, layout);
     return templateData;
 }
 
-export function renderCirthSVG(templateText, modeId, layoutId) {
-    const templateData = getCirthTemplateData(modeId, layoutId);
+export function renderCirthSVG(templateText, modeId, layoutId, includeUnused) {
+    if (includeUnused === undefined) includeUnused = true;
+    const templateData = getCirthTemplateData(modeId, layoutId, includeUnused);
     const cirthSvg = mustache.render(templateText, templateData);
     return cirthSvg;
 }
