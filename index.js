@@ -1,3 +1,6 @@
+// import { default as mustache } from 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.js';;
+import { default as mustache } from './node_modules/mustache/mustache.mjs';
+
 const HALF_SPACE = {'special': 'half-space'};
 const FULL_SPACE = {'special': 'full-space'};
 const SPACE = FULL_SPACE;
@@ -14,7 +17,7 @@ const CIRTH_PUNCT_THREE_DOTS_L = 'P7B'; // 123 == character for { which is how y
 const CIRTH_PUNCT_FOUR_DOTS = 'P7D';    // 125 == character for } which is how you type this
 const CIRTH_PUNCT_EQUAL = 'P=';         // 61 / 0x3D would be the character for =
 
-const cirthModes = {
+export const cirthModes = {
     common: {
         orthography: {
             1: {orthography: 'p'},
@@ -194,7 +197,7 @@ const cirthModes = {
     },
 }
 
-const cirthData = {
+export const cirthData = {
     // This unicodeTable is for reference, and represents the proposed inclusion of Cirth in unicode (not yet standardised)
     // See https://www.evertype.com/standards/iso10646/pdf/cirth.pdf
     unicodeTable: {
@@ -438,7 +441,7 @@ const cirthData = {
     },
 }
 
-const cirthLayouts = {
+export const cirthLayouts = {
     portrait: {
         name: 'portrait',
         orientation: 'portrait',
@@ -711,32 +714,9 @@ function getCirthTemplateData(modeId, layoutId) {
     return templateData;
 }
 
-export function renderCirthSVG(mustache, templateText, modeId, layoutId) {
+export function renderCirthSVG(templateText, modeId, layoutId) {
     const templateData = getCirthTemplateData(modeId, layoutId);
     const cirthSvg = mustache.render(templateText, templateData);
     return cirthSvg;
-}
-
-function cmdLine() {
-    const fs = require('fs');
-    const mustache = require('mustache');
-    try {
-        for (const [modeId, cirthMode] of Object.entries(cirthModes)) {
-            for (const [layoutId, cirthLayout] of Object.entries(cirthLayouts)) {
-                if (cirthMode.name == undefined) continue;
-                const filename = `cirth-chart-${cirthMode.name}-${layoutId}.svg`;
-                console.log(`Writing diagram for ${modeId} (${cirthMode.title}) into ${filename}`);
-                const templateText = fs.readFileSync('cirth-chart.svg.mustache', {encoding: 'utf-8'});
-                const cirthSvg = renderCirthSVG(mustache, templateText, modeId, layoutId);
-                fs.writeFileSync(filename, cirthSvg);
-            }
-        }
-    } catch(err) {
-        console.error(err);
-    }
-}
-
-if (typeof require !== 'undefined' && typeof module !== 'undefined' && require.main === module) {
-    cmdLine();
 }
 
