@@ -28,9 +28,14 @@
                     )
                 });
             };
+            function copyText() {
+                var textElement = document.getElementById('cirthText');
+                navigator.clipboard.writeText(textElement.value);
+            }
             renderChart();
             $('#cirthMode').change(renderChart);
             $('#cirthLayout').change(renderChart);
+            document.getElementById('copyCirth').addEventListener('click', copyText);
         </script>
         <style type='text/css'>
             @media print {
@@ -44,6 +49,9 @@
                 width: '100%';
             }
             div#controls select {
+                margin-right: 5px;
+            }
+            div#controls input {
                 margin-right: 5px;
             }
             input#cirthText {
@@ -64,6 +72,7 @@
                 <option value="portrait">Portrait</option>
             </select>
             <input type="text" id="cirthText"/>
+            <input type="button" name="copyCirth" id="copyCirth" value="Copy"/>
         </div>
         <div id="chart"></div>
     </body>
