@@ -652,10 +652,14 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
             console.log("Skipped row at", rowLabel);
         }
     }
+    // these complicated heuristics could perhaps be handled better by fixing them based on mode id
     let shiftPunctuationRows = 0;
     let shiftLegendRows = 0;
+    let shiftTitleStart = 0;
+    let shiftTitleEnd = 0;
     for (let skippedRow of rowsSkipped) {
-        // this is non-automatic: the punctuation block can't clash with row 8
+        if (skippedRow < 7) shiftTitleStart += 1;
+        if (skippedRow > 7) shiftTitleEnd += 1;
         if (skippedRow < 9) shiftPunctuationRows += 1;
         if (skippedRow < 11) shiftLegendRows += 1;
     }
@@ -663,9 +667,14 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
         console.log(`Adjusting punctuation block by ${shiftPunctuationRows}`);
         layout.textPositions.punctuationTitle.y -= layout.tileMetrics.cirthSpacing.y * shiftPunctuationRows;
     }
-    if (shiftLegendRows > 0) {
-        console.log("Adjusting legend by ${shiftLegendRows}");
+    if (shiftLegendRows != 0) {
+        console.log(`Adjusting legend by ${shiftLegendRows}`);
         if (orientation == 'portrait') {
+            if (shiftTitleEnd >= 2) {
+                layout.textPositions.descriptionText.x -= layout.tileMetrics.cirthSpacing.x * 5;
+                layout.textPositions.descriptionText.y += layout.tileMetrics.cirthSpacing.x * 2.2;
+                shiftLegendRows += 0.5;
+            }
             for (let textItem of ['cirthLegend', 'legendLText', 'legendRText', 'descriptionText']) {
                 layout.textPositions[textItem].y -= layout.tileMetrics.cirthSpacing.y * shiftLegendRows;
             }
@@ -673,6 +682,24 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
             for (let textItem of ['cirthLegend', 'legendLText', 'legendRText', 'descriptionText']) {
                 layout.textPositions[textItem].x -= layout.tileMetrics.cirthSpacing.x * shiftLegendRows;
             }
+        }
+    }
+    if (shiftTitleStart != 0 || shiftTitleEnd != 0) {
+        let shiftTitle = shiftTitleStart;
+        console.log(`Adjusting title by ${shiftTitle} with ${shiftTitleEnd - shiftTitleStart}`);
+        if (orientation == 'portrait') {
+            if (shiftTitleEnd < 2) {
+                shiftTitle += 1;
+                layout.textSizes.chartTitle.fontSize *= 0.95;
+            }
+            layout.textPositions.chartTitle.x += layout.tileMetrics.cirthSpacing.x * shiftTitle;
+        }
+        else if (orientation == 'landscape') {
+            if (shiftTitleEnd < 2) {
+                layout.textSizes.chartTitle.fontSize *= 0.92;
+                shiftTitle += 0.1;
+            }
+            layout.textPositions.chartTitle.x -= layout.tileMetrics.cirthSpacing.x * shiftTitle;
         }
     }
 
