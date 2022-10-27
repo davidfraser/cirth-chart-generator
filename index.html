@@ -3,6 +3,7 @@
         <title>Cirth Chart Generator</title>
         <script type="module">
             import { renderCirthSVG } from './index.js';
+            const byId = (id) => document.getElementById(id);
             function clickCirth(element) {
                 const id = element.id.replace('gCirth', '');
                 var symbolElement = element.querySelector('text.symbol');
@@ -13,10 +14,11 @@
                 textElement.focus();
             }
             function renderChart() {
+                const layoutId = byId('cirthLayout').value;
+                document.getElementById('printOrientationStyle').innerText = `@page { size: ${layoutId}; }`;
                 fetch('./cirth-chart.svg.mustache').then((response) => {
                     return response.text();
                 }).then((templateText) => {
-                    const byId = (id) => document.getElementById(id);
                     var output = renderCirthSVG(templateText, byId('cirthMode').value, byId('cirthLayout').value, byId('cirthUnused').checked);
                     document.getElementById('chart').innerHTML = output;
                     var cirthItems = document.querySelectorAll("svg g.cirthClick");
@@ -37,12 +39,24 @@
             document.getElementById('cirthUnused').addEventListener('change', renderChart);
             document.getElementById('copyCirth').addEventListener('click', copyText);
         </script>
-        <style type='text/css'>
+        <style type='text/css' media="print">
             @media print {
                 .hidden-print {
                     display: none !important;
                 }
+                body { 
+                    margin: 0;
+                    padding: 0;
+                }
+                div#chart {
+                    overflow: visible;
+                }
             }
+        </style>
+        <style type="text/css" media="print" id="printOrientationStyle">
+            @page { size: landscape; }
+        </style>
+        <style type='text/css' media="screen">
             div#controls {
                 display: flex;
                 flex-direction: row;
@@ -85,7 +99,7 @@
     </head>
     <body>
         <div id="page">
-            <div id="controls">
+            <div id="controls" class="hidden-print">
                 <select id="cirthMode" name="cirthMode" class="hidden-print control">
                     <option value="daeron" selected="true">Angerthas Daeron</option>
                     <option value="moria">Angerthas Moria</option>
