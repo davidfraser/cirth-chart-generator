@@ -58,22 +58,41 @@
                 font-family: 'Cirth Erebor';
                 flex: 1;
             }
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 5px;
+                overflow: hidden;
+            }
+            div#page {
+                display: flex;
+                flex-direction: column;
+                padding: 0;
+                height: 100%;
+            }
+            div#chart {
+                flex: 1;
+                overflow: auto;
+                margin: 5px;
+            }
         </style>
     </head>
     <body>
-        <div id="controls">
-            <select id="cirthMode" name="cirthMode" class="hidden-print">
-                <option value="daeron" selected="true">Angerthas Daeron</option>
-                <option value="moria">Angerthas Moria</option>
-                <option value="erebor">Angerthas Erebor</option>
-            </select>
-            <select id="cirthLayout" name="cirthLayout" class="hidden-print">
-                <option value="landscape" selected="true">Landscape</option>
-                <option value="portrait">Portrait</option>
-            </select>
-            <input type="text" id="cirthText"/>
-            <input type="button" name="copyCirth" id="copyCirth" value="Copy"/>
+        <div id="page">
+            <div id="controls">
+                <select id="cirthMode" name="cirthMode" class="hidden-print">
+                    <option value="daeron" selected="true">Angerthas Daeron</option>
+                    <option value="moria">Angerthas Moria</option>
+                    <option value="erebor">Angerthas Erebor</option>
+                </select>
+                <select id="cirthLayout" name="cirthLayout" class="hidden-print">
+                    <option value="landscape" selected="true">Landscape</option>
+                    <option value="portrait">Portrait</option>
+                </select>
+                <input type="text" id="cirthText"/>
+                <input type="button" name="copyCirth" id="copyCirth" value="Copy"/>
+            </div>
+            <div id="chart"></div>
         </div>
-        <div id="chart"></div>
     </body>
 </html>
