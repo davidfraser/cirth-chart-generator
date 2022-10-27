@@ -33,11 +33,23 @@
                 var textElement = document.getElementById('cirthText');
                 navigator.clipboard.writeText(textElement.value);
             }
+            function downloadSVG() {
+                const SVGText = document.getElementById('chart').innerHTML;
+                const element = document.createElement('a');
+                const modeId = byId('cirthMode').value, layoutId = byId('cirthLayout').value;
+                element.setAttribute('href', 'data:text/svg;charset=utf-8,'+encodeURIComponent(SVGText));
+                element.setAttribute('download', `cirth-chart-angerthas-${modeId}-${layoutId}.svg`);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            }
             renderChart();
             document.getElementById('cirthMode').addEventListener('change', renderChart);
             document.getElementById('cirthLayout').addEventListener('change', renderChart);
             document.getElementById('cirthUnused').addEventListener('change', renderChart);
             document.getElementById('copyCirth').addEventListener('click', copyText);
+            document.getElementById('downloadSVG').addEventListener('click', downloadSVG);
         </script>
         <style type='text/css' media="print">
             @media print {
@@ -115,6 +127,7 @@
                 </span>
                 <input type="text" id="cirthText" class="control"/>
                 <input type="button" name="copyCirth" id="copyCirth" value="Copy" class="hidden-print control"/>
+                <input type="button" name="downloadSVG" id="downloadSVG" value="Download" class="hidden-print control"/>
             </div>
             <div id="chart"></div>
         </div>
