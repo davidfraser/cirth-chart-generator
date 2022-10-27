@@ -625,11 +625,11 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
         var expandedChars = [];
         let indexOffset = 0;
         for (let [index, cirthNumber] of cirthRow['cirth'].entries()) {
-            if (cirthNumber == HALF_SPACE) {
+            if (typeof cirthNumber === 'object' && cirthNumber.special == 'half-space') {
                 indexOffset -= 0.5;
                 continue
             }
-            if (cirthNumber == FULL_SPACE) {
+            if (typeof cirthNumber === 'object' && cirthNumber.special == 'full-space') {
                 continue;
             }
             var charInfo = compileCirthInfo(cirthNumber, charLookup, orthLookup);
@@ -657,7 +657,10 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
         if (skippedRow >= 9) continue;
         shiftPunctuationRows += 1;
     }
-    console.log(`Adjusting punctuation block by ${shiftPunctuationRows}`);
+    if (shiftPunctuationRows != 0) {
+        console.log(`Adjusting punctuation block by ${shiftPunctuationRows}`);
+        layout.textPositions.punctuationTitle.y -= layout.tileMetrics.cirthSpacing.x * shiftPunctuationRows;
+    }
 
     for (var cirthRow of layout['punctuationRows']) {
         const rowLabel = cirthRow['rowLabel'];
@@ -674,11 +677,11 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
         var expandedChars = [];
         let indexOffset = 0;
         for (let [index, cirthNumber] of cirthRow['cirth'].entries()) {
-            if (cirthNumber == HALF_SPACE) {
+            if (typeof cirthNumber === 'object' && cirthNumber.special == 'half-space') {
                 indexOffset -= 0.5;
                 continue
             }
-            if (cirthNumber == FULL_SPACE) {
+            if (typeof cirthNumber === 'object' && cirthNumber.special == 'full-space') {
                 continue;
             }
             var charInfo = compileCirthInfo(cirthNumber, charLookup, false);
@@ -726,7 +729,7 @@ function expandedLayout(layout, charLookup, orthLookup, includeUnused) {
 
 function getCirthTemplateData(modeId, layoutId, includeUnused) {
     const cirthMode = cirthModes[modeId];
-    const cirthLayout = cirthLayouts[layoutId];
+    const cirthLayout = structuredClone(cirthLayouts[layoutId]);
     const calculatedOrthography = Object.assign({}, cirthModes.common.orthography, cirthMode.orthography);
     cirthMode.orthography = calculatedOrthography;
     const layout = expandedLayout(cirthLayout, cirthData.fontData, cirthMode.orthography, includeUnused);
