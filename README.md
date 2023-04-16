@@ -9,7 +9,7 @@ It is intended for those learning a script, to make it easier and quicker
 to find a character and see its phonetic value, equivalence in another script,
 or get help in inputting it (a keyboard / key reference).
 
-It was designed for J R R Tolkien's Cirth - runes used by Dwarves in his
+It was designed for J R R Tolkien's Cirth - runes used by Elves and Dwarves in his
 fantasy novels _The Hobbit_ and _The Lord of the Rings_ etc.
 
 In the internal history of the novels, there were different uses of the scripts
