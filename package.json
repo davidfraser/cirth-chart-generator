@@ -2,9 +2,10 @@
   "name": "cirth-chart-generator",
   "version": "1.0.0",
   "description": "Generates SVG imagse of references for Tolkien's Cirth characters",
-  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server",
+    "generate-svg": "node ./main.js",
+    "build": "parcel build index.html --dist-dir _site --public-url ./ "
   },
   "keywords": [
     "tolkien",
@@ -16,5 +17,16 @@
   "dependencies": {
     "mustache": "^4.2.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "parcel": "^2.12.0",
+    "parcel-reporter-static-files-copy": "^1.5.3"
+  },
+  "staticFiles": [
+    {
+      "staticPath": "cirth-chart.svg.mustache",
+      "staticOutPath": "."
+    }
+  ]
 }

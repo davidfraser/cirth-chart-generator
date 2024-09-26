@@ -19,7 +19,7 @@ This system therefore allows for multiple versions of the scripts.
 Usage
 -----
 
-To produce the set of charts, run `node ./main.js`
+To produce the set of charts, run `node ./main.js` or `npm run generate-svg`
 
 This requires node v17 or later.
 
@@ -28,13 +28,21 @@ or a vector graphics package like Inkscape.
 
 There is also a web version of the system in `index.html`
 To run this you need a web server serving the contents of this folder.
-If you have the Python programming language installed, a simple way to do this is:
-`python serve-http.py`
-To do this with node, you can run the following command (which may prompt for installation):
-`npx http-server`
+You can do this with the included start script - run `npm start`
 
 This allows you to interactively select the script version, layout (portrait/landscape),
 and download the resulting chart.
 It also allows you to click on the characters to generate a text,
 and copy and paste this elsewhere.
 
+Building Static Site
+--------------------
+
+To build the site in a way that allows it to be served from static files, run `npm run build`.
+This will create the files in the `_site` subdirectory.
+
+Other ways to serve static files:
+* If you have the Python programming language installed, a simple way to do this is:
+`python serve-http.py`
+* To do this with node, you can run the following command (which may prompt for installation):
+`npx http-server`
