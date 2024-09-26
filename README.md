@@ -46,3 +46,8 @@ Other ways to serve static files:
 `python serve-http.py`
 * To do this with node, you can run the following command (which may prompt for installation):
 `npx http-server`
+
+Deployment to GitHub Pages
+--------------------------
+
+There is a custom GitHub action used to deploy to GitHub Pages
