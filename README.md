@@ -29,7 +29,7 @@ or a vector graphics package like Inkscape.
 There is also a web version of the system in `index.html`
 To run this you need a web server serving the contents of this folder.
 If you have the Python programming language installed, a simple way to do this is:
-`python -m http.server`
+`python serve-http.py`
 To do this with node, you can run the following command (which may prompt for installation):
 `npx http-server`
 
