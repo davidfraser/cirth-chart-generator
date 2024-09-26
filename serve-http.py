@@ -23,4 +23,7 @@ args = parser.parse_args()
 
 with socketserver.TCPServer(("", args.port), Handler) as httpd:
     print(f"Serving at port {args.port}")
-    httpd.serve_forever()
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("Terminating...")
